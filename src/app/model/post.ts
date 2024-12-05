@@ -1,7 +1,7 @@
 export interface Post {
   id: number;
   username: string;
-  name: string;
+  fullname: string;
   description: string;
   media?: string;
   shares: number;

@@ -20,8 +20,10 @@
     "@angular/router": "^16.1.0",
     "@ng-bootstrap/ng-bootstrap": "^15.1.2",
     "@popperjs/core": "^2.11.6",
+    "axios": "^1.7.9",
     "boostrap": "^2.0.0",
     "bootstrap": "^5.3.3",
+    "json-server": "^1.0.0-beta.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

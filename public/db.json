@@ -1,7 +1,8 @@
-[
+{
+  "posts":[
   {
     "username": "CoderFoulen",
-    "name": "Foulen BenFoulen",
+    "fullname": "Foulen BenFoulen",
     "description": "Just discovered a powerful Angular library for forms validation. Highly recommend checking out @angular/forms for reactive forms! 🚀",
     "media": null,
     "interactions": {
@@ -12,7 +13,7 @@
   },
   {
     "username": "TnTechie",
-    "name": "Amira Gharbi",
+    "fullname": "Amira Gharbi",
     "description": "Tunisia is becoming a hub for tech startups! Check out these top incubators for your next project. 🖥️",
     "media": "images/startup_tunisia.jpg",
     "interactions": {
@@ -23,7 +24,7 @@
   },
   {
     "username": "HoussemDev",
-    "name": "Houssem Jlassi",
+    "fullname": "Houssem Jlassi",
     "description": "Debugging is like being the detective in a crime movie where you are also the murderer. 💻 Anyone else feeling this while coding?",
     "media": null,
     "interactions": {
@@ -34,7 +35,7 @@
   },
   {
     "username": "Nour_IT",
-    "name": "Nour Trabelsi",
+    "fullname": "Nour Trabelsi",
     "post": "Finished building a REST API with Spring Boot today. Java is still king in backend development. 👑",
     "media": "images/springboot.jpg",
     "interactions": {
@@ -45,7 +46,7 @@
   },
   {
     "username": "CloudyTn",
-    "name": "Mehdi Saaidi",
+    "fullname": "Mehdi Saaidi",
     "post": "What do you prefer for DevOps: Docker or Kubernetes? Starting a project in Tunisia and looking for advice. 🌐",
     "media": null,
     "interactions": {
@@ -56,7 +57,7 @@
   },
   {
     "username": "LatifaAI",
-    "name": "Latifa Mansouri",
+    "fullname": "Latifa Mansouri",
     "post": "Artificial Intelligence is changing Tunisia's job market. Have you tried any machine learning projects recently?",
     "media": "images/ai_tunisia.jpg",
     "interactions": {
@@ -64,5 +65,5 @@
       "comments": 35,
       "likes": 90
     }
+  }]
   }
-]
