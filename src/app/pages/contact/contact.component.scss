@@ -1,0 +1,77 @@
+section {
+  h1 {
+    padding: 32px 52px;
+    border-bottom: 1px solid var(--dark-color);
+    font-size: 64px;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: var(--dark-color);
+  }
+  .divAll {
+    padding: 32px 52px;
+  }
+  span {
+    -webkit-text-fill-color: var(--color-1);
+    -webkit-text-stroke-color: var(--dark-color);
+  }
+
+  p {
+    width: 100%;
+    max-width: 789px;
+  }
+  .card {
+    width: 563px;
+    padding: 30px 20px;
+    border: 1px solid var(--color-1);
+    border-radius: 28px;
+    background-color: var(--light-color);
+    display: grid;
+    gap: 60px;
+    text-align: center;
+
+    form {
+      display: grid;
+      gap: 30px;
+
+      .inputs {
+        display: grid;
+        gap: 25px;
+
+        .two-inputs {
+          display: grid;
+          gap: 20px;
+
+          input,textarea{
+            border: 1px grey solid !important;
+
+            &:focus {
+              border: none !important;
+              box-shadow: 0px 0px 4px var(--color-1);
+              background-color: var(--white) !important;
+            }
+          }
+        }
+
+        .last-input {
+          display: flex;
+          justify-content: space-between;
+          label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+          }
+
+          input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+
+            &:checked {
+              background-color: var(--color-1) !important;
+              border-color: var(--color-1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

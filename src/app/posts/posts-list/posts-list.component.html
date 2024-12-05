@@ -1,0 +1,49 @@
+<div class="container" *ngIf="postsFinal.length > 0">
+  <div class="card" *ngFor="let post of posts">
+    <div class="card-body">
+      <div class="card-header">
+        <div class="card-group">
+          <div class="img-letters"></div>
+          <div class="card-title m-0">
+            <span><b>{{ post.name }}</b></span>
+            <div class="card-subtitle"><small>@{{ post.username }}</small></div>
+          </div>
+        </div>
+        <div class="description">
+          <p>{{ post.description }}</p>
+        </div>
+      </div>
+      <div class="card-footer" *ngIf="post.media">
+        <img [src]="post.media" alt="Post Media">
+      </div>
+    </div>
+    <aside>
+      <a class="dropdown">
+        <img src="../../../assets/imgs/icons/dots.svg" alt="dots">
+      </a>
+      <div class="part-reacts">
+        <div class="text-center">
+          <a href="" class="icon-wrapper">
+            <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon">
+            <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon" class="icon-hover">
+          </a>
+          <span class="m-0">{{ post.interactions.shares }}</span>
+        </div>
+        <div class="text-center">
+          <a href="" class="icon-wrapper">
+            <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
+            <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon" class="icon-hover">
+          </a>
+          <span class="m-0">{{ post.interactions.comments }}</span>
+        </div>
+        <div class="text-center">
+          <a href="" class="icon-wrapper">
+            <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon">
+            <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon" class="icon-hover">
+          </a>
+          <span class="m-0">{{ post.interactions.likes }}</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

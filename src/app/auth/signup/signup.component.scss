@@ -1,0 +1,58 @@
+.card {
+  width: 440px;
+  margin: 60px auto;
+  padding: 30px 20px;
+  border: 1px solid var(--color-1);
+  border-radius: 28px;
+  background-color: var(--light-color);
+  display: grid;
+  gap: 60px;
+  text-align: center;
+
+  form {
+    display: grid;
+    gap: 30px;
+
+    .inputs {
+      display: grid;
+      gap: 25px;
+
+      .two-inputs {
+        display: grid;
+        gap: 20px;
+
+        input {
+          border: 1px grey solid !important;
+
+          &:focus {
+            border: none !important;
+            box-shadow: 0px 0px 4px var(--color-1);
+            background-color: var(--white) !important;
+          }
+        }
+      }
+
+      .last-input {
+        display: flex;
+        justify-content: space-between;
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+
+          &:checked {
+            background-color: var(--color-1) !important;
+            border-color: var(--color-1);
+          }
+        }
+
+      }
+    }
+  }
+}
