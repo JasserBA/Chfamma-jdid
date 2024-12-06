@@ -9,6 +9,8 @@ import { ImageService } from 'src/app/core/image-service.service';
   styleUrls: ['./posts-list.component.scss']
 })
 export class PostsListComponent implements OnInit {
+  gridType: boolean = false;
+
   actions = [
     { icon: '../../../../assets/imgs/icons/share.svg', hoverIcon: '../../../../assets/imgs/icons/share-hovered.svg', alt: 'Share Icon', nb: '5' },
     { icon: '../../../../assets/imgs/icons/comment-hovered.svg', hoverIcon: '.../comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
@@ -18,10 +20,12 @@ export class PostsListComponent implements OnInit {
   posts: Post[] = [];
   postsFinal: Post[] = [];
   filterText = "";
+  currentUser: { username: string; fullname: string } | null = null;
 
   constructor(private s: AuthService, private imageService: ImageService) { }
   ngOnInit(): void {
     this.fetchPosts();
+    this.fetchCurrentUser();
   }
 
   async fetchPosts() {
@@ -79,6 +83,43 @@ export class PostsListComponent implements OnInit {
     event.stopPropagation();
 
   }
+  onGridClick(event: MouseEvent): void {
+    this.gridType = !this.gridType;
+    event.stopPropagation();
+  }
 
+  fetchCurrentUser(): void {
+    this.s.getCurrentUser().subscribe({
+      next: (user) => {
+        if (user) {
+          this.currentUser = user;
+        } else {
+          this.currentUser = null; // No user means guest
+        }
+      },
+      error: (err) => {
+        console.error('Failed to fetch current user:', err);
+      }
+    });
+  }
+  deletePost(event: MouseEvent, postId: string): void {
+    const currPost = this.posts.find(post => post.id === postId);
+    const currentUsername = this.currentUser?.username || `GuestUser`;
+
+    if (currPost && currentUsername === currPost.username) {
+      if (confirm("Really?"))
+        this.s.deleteProduitById(postId).subscribe({
+          next: () => {
+            this.fetchPosts()
+            alert('Post deleted successfully!');
+          },
+          error: (err) => {
+            console.error('Failed to delete post:', err);
+            alert('Error deleting post. Please try again.');
+          }
+        })
+    }
+    event.stopPropagation();
+  }
 }
 

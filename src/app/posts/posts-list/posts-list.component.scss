@@ -1,10 +1,11 @@
-.container{
-  margin-top: 60px;
+.posts{
   font-size: 15px;
+  max-width: 500px;
+  display: grid;
+  gap: 16px;
   .card {
     cursor: pointer;
     background-color: var(--light-color)!important;
-    max-width: 500px;
     border: solid var(--color-1) 1px;
     border-radius: 19px ;
     padding: 15px;
@@ -17,7 +18,8 @@
       display: grid;
       gap: 10px;
       .card-header{
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 10px;
         padding: 0;
         background-color: transparent;
@@ -56,21 +58,32 @@
     aside {
       display: grid;
       align-content: space-between;
+      a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       .part-reacts {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        div{
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      span{
+        font-size: 12px !important;
       }
     }}
-
 }
-
 
 .icon-wrapper, .icon-grid {
   position: relative;
   display: inline-block;
   width: 25px;
   height: 25px;
+  cursor: pointer !important;
 }
 
 .icon {
@@ -85,20 +98,27 @@
 .share-icon-hover,
 .comment-icon-hover,
 .like-icon-hover,
-.grid-1-icon-hover{
+.grid-1-icon-hover,
+.grid-2-icon-hover{
   opacity: 0;
 }
 
-.icon-wrapper:hover .icon {
+.icon-wrapper:hover .icon, .icon-grid:focus .icon {
+  transition: none!important;
   opacity: 0;
 }
-.icon-grid:active .icon {
-  opacity: 0;
-}
+
 
 .icon-wrapper:hover .share-icon-hover,
 .icon-wrapper:hover .comment-icon-hover,
-.icon-wrapper:hover .like-icon-hover
+.icon-wrapper:hover .like-icon-hover,
+.icon-grid:active .grid-1-icon-hover,
+.icon-grid:active .grid-2-icon-hover
 {
   opacity: 1;
+}
+
+.grid{
+  display: flex;
+  justify-content: end;
 }

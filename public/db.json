@@ -1,75 +1,125 @@
 {
-  "posts":[
-  {
-    "username": "CoderFoulen",
-    "fullname": "Foulen BenFoulen",
-    "description": "Just discovered a powerful Angular library for forms validation. Highly recommend checking out @angular/forms for reactive forms! 🚀",
-    "media": null,
-    "interactions": {
-      "shares": 12,
-      "comments": 5,
-      "likes": 35,
-      "liked":false
-    }
+  "currentuser": {
+    "username": "Jasserr",
+    "fullname": "Jasser BenAbdallah"
   },
-  {
-    "username": "TnTechie",
-    "fullname": "Amira Gharbi",
-    "description": "Tunisia is becoming a hub for tech startups! Check out these top incubators for your next project. 🖥️",
-    "media": "images/startup_tunisia.jpg",
-    "interactions": {
-      "shares": 20,
-      "comments": 15,
-      "likes": 60,
-      "liked":false
+  "posts": [
+    {
+      "username": "CoderFoulen",
+      "fullname": "Foulen BenFoulen",
+      "description": "Just discovered a powerful Angular library for forms validation. Highly recommend checking out @angular/forms for reactive forms! 🚀",
+      "media": null,
+      "interactions": {
+        "shares": 12,
+        "comments": 5,
+        "likes": 35,
+        "liked": false
+      },
+      "id": "2d41"
+    },
+    {
+      "username": "TnTechie",
+      "fullname": "Amira Gharbi",
+      "description": "Tunisia is becoming a hub for tech startups! Check out these top incubators for your next project. 🖥️",
+      "media": "images/startup_tunisia.jpg",
+      "interactions": {
+        "shares": 20,
+        "comments": 15,
+        "likes": 60,
+        "liked": false
+      },
+      "id": "fa76"
+    },
+    {
+      "username": "HoussemDev",
+      "fullname": "Houssem Jlassi",
+      "description": "Debugging is like being the detective in a crime movie where you are also the murderer. 💻 Anyone else feeling this while coding?",
+      "media": null,
+      "interactions": {
+        "shares": 18,
+        "comments": 30,
+        "likes": 75,
+        "liked": false
+      },
+      "id": "454b"
+    },
+    {
+      "username": "Nour_IT",
+      "fullname": "Nour Trabelsi",
+      "post": "Finished building a REST API with Spring Boot today. Java is still king in backend development. 👑",
+      "media": "images/springboot.jpg",
+      "interactions": {
+        "shares": 25,
+        "comments": 10,
+        "likes": 50,
+        "liked": false
+      },
+      "id": "0542"
+    },
+    {
+      "username": "CloudyTn",
+      "fullname": "Mehdi Saaidi",
+      "post": "What do you prefer for DevOps: Docker or Kubernetes? Starting a project in Tunisia and looking for advice. 🌐",
+      "media": null,
+      "interactions": {
+        "shares": 10,
+        "comments": 50,
+        "likes": 45,
+        "liked": false
+      },
+      "id": "da39"
+    },
+    {
+      "username": "LatifaAI",
+      "fullname": "Latifa Mansouri",
+      "post": "Artificial Intelligence is changing Tunisia's job market. Have you tried any machine learning projects recently?",
+      "media": "images/ai_tunisia.jpg",
+      "interactions": {
+        "shares": 40,
+        "comments": 35,
+        "likes": 90,
+        "liked": false
+      },
+      "id": "9897"
+    },
+    {
+      "id": "po1gc7",
+      "username": "GuestUser",
+      "fullname": "Guest User",
+      "description": "ghjghj",
+      "media": "",
+      "interactions": {
+        "shares": 0,
+        "comments": 0,
+        "likes": 0
+      },
+      "liked": false
+    },
+    {
+      "id": "ve377z",
+      "username": "GuestUser",
+      "fullname": "Guest User",
+      "description": "qsdqsd",
+      "media": "",
+      "interactions": {
+        "shares": 0,
+        "comments": 0,
+        "likes": 0
+      },
+      "liked": false
+    },
+    {
+      "id": "udisfy",
+      "username": "GuestUser",
+      "fullname": "Guest User",
+      "description": "guestguest\n",
+      "media": "",
+      "interactions": {
+        "shares": 0,
+        "comments": 0,
+        "likes": 0
+      },
+      "liked": false
     }
-  },
-  {
-    "username": "HoussemDev",
-    "fullname": "Houssem Jlassi",
-    "description": "Debugging is like being the detective in a crime movie where you are also the murderer. 💻 Anyone else feeling this while coding?",
-    "media": null,
-    "interactions": {
-      "shares": 18,
-      "comments": 30,
-      "likes": 75,
-      "liked":false
-    }
-  },
-  {
-    "username": "Nour_IT",
-    "fullname": "Nour Trabelsi",
-    "post": "Finished building a REST API with Spring Boot today. Java is still king in backend development. 👑",
-    "media": "images/springboot.jpg",
-    "interactions": {
-      "shares": 25,
-      "comments": 10,
-      "likes": 50,
-      "liked":false
-    }
-  },
-  {
-    "username": "CloudyTn",
-    "fullname": "Mehdi Saaidi",
-    "post": "What do you prefer for DevOps: Docker or Kubernetes? Starting a project in Tunisia and looking for advice. 🌐",
-    "media": null,
-    "interactions": {
-      "shares": 10,
-      "comments": 50,
-      "likes": 45,
-      "liked":false
-    }
-  },
-  {
-    "username": "LatifaAI",
-    "fullname": "Latifa Mansouri",
-    "post": "Artificial Intelligence is changing Tunisia's job market. Have you tried any machine learning projects recently?",
-    "media": "images/ai_tunisia.jpg",
-    "interactions": {
-      "shares": 40,
-      "comments": 35,
-      "likes": 90,
-      "liked":false
-    }
-  }]
-  }
+  ]
+}

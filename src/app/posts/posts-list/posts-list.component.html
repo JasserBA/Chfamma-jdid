@@ -1,14 +1,22 @@
-<div class="container">
+<div class="posts">
   <div class="part-reacts">
-    <div class="text-center">
-      <a class="icon-grid">
-        <img src="../../../assets/imgs/icons/grid-1.svg" alt="Grid-1 Icon" class="icon">
-        <img src="../../../assets/imgs/icons/grid-1-selected.svg" alt="Selected Grid-1 Icon" class="grid-1-icon-hover">
+    <div class="grid">
+      <a class="icon-grid " (click)="onGridClick($event)">
+        <img src="../../../assets/imgs/icons/grid-1.svg" alt="Grid-1 Icon" class="icon"
+          [ngStyle]="{'opacity': !gridType ? '0' : null}">
+        <img src="../../../assets/imgs/icons/grid-1-selected.svg" alt="Selected Grid-1 Icon" class="grid-1-icon-hover"
+          [ngClass]="{ 'grid-1-icon-hover': gridType }">
+      </a>
+      <a class="icon-grid " (click)="onGridClick($event)">
+        <img src="../../../assets/imgs/icons/grid-2.svg" alt="Grid-2 Icon" class="icon"
+          [ngStyle]="{'opacity': gridType ? '0' : null}">
+        <img src="../../../assets/imgs/icons/grid-2-selected.svg" alt="Selected Grid-2 Icon" class="grid-2-icon-hover"
+          [ngClass]="{ 'grid-2-icon-hover': !gridType }">
       </a>
     </div>
   </div>
   <app-post-add></app-post-add>
-  <div class="card mb-2" *ngFor="let post of posts" routerLink="/details/{{ post.id }}">
+  <div class="card" *ngFor="let post of posts" routerLink="/details/{{ post.id }}">
     <div class="card-body">
       <div class="card-header border-0">
         <div class="card-group">
@@ -29,7 +37,7 @@
       </div>
     </div>
     <aside>
-      <a (click)="onDotsClick($event)">
+      <a (click)="deletePost($event,post.id)">
         <img src="../../../assets/imgs/icons/dots.svg" alt="Dots Icon">
       </a>
       <div class="part-reacts">
