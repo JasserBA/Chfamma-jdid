@@ -1,4 +1,5 @@
 export interface Post {
+  id: string,
   username: string;
   fullname: string;
   description: string;
@@ -9,5 +10,5 @@ export interface Post {
     likes: number;
   };
   liked?: boolean,
-  id: string
+  createdDate: string;
 }

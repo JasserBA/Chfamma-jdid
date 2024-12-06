@@ -1,9 +1,9 @@
 nav{
   gap: 90px;
-  padding: 1rem 3.25rem;
-  border-bottom: 1px solid #5E59EA;
-  display: flex;
-  justify-content: space-between;
+  padding: 1rem 12px;
+  .navbar-collapse{
+      justify-content: space-between;
+  }
 }
 
 form{

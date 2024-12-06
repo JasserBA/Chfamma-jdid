@@ -9,57 +9,63 @@ import { ImageService } from 'src/app/core/image-service.service';
   styleUrls: ['./posts-list.component.scss']
 })
 export class PostsListComponent implements OnInit {
-  gridType: boolean = false;
-
-  actions = [
-    { icon: '../../../../assets/imgs/icons/share.svg', hoverIcon: '../../../../assets/imgs/icons/share-hovered.svg', alt: 'Share Icon', nb: '5' },
-    { icon: '../../../../assets/imgs/icons/comment-hovered.svg', hoverIcon: '.../comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
-    { icon: '../../../../assets/imgs/icons/like.svg', hoverIcon: '../../../../assets/imgs/icons/like-hovered.svg', alt: 'Like Icon', nb: '22' }
-  ];
-
+  gridType = false;
   posts: Post[] = [];
   postsFinal: Post[] = [];
-  filterText = "";
+  filterText = '';
   currentUser: { username: string; fullname: string } | null = null;
+  initials = this.authService.getUserInitials;
 
-  constructor(private s: AuthService, private imageService: ImageService) { }
+  actions = [
+    { icon: 'assets/imgs/icons/share.svg', hoverIcon: 'assets/imgs/icons/share-hovered.svg', alt: 'Share Icon', nb: '5' },
+    { icon: 'assets/imgs/icons/comment.svg', hoverIcon: 'assets/imgs/icons/comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
+    { icon: 'assets/imgs/icons/like.svg', hoverIcon: 'assets/imgs/icons/like-hovered.svg', alt: 'Like Icon', nb: '22' }
+  ];
+
+  sortOrder: 'Newest to Oldest' | 'Oldest to Newest' = 'Newest to Oldest';
+
+  constructor(private authService: AuthService, private imageService: ImageService) { }
+
   ngOnInit(): void {
     this.fetchPosts();
     this.fetchCurrentUser();
   }
 
-  async fetchPosts() {
-    this.s.getAllPosts().subscribe({
+  private fetchPosts(): void {
+    this.authService.getAllPosts().subscribe({
       next: (posts) => {
-        this.posts = posts;
-        this.postsFinal = posts;
+        this.posts = posts.sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
+        this.postsFinal = [...this.posts];
+        this.fetchPostMedia();
       },
-      error: (err) => console.error("Failed to fetch posts")
-    })
-    for (let post of this.postsFinal) {
+      error: (err) => console.error('Failed to fetch posts:', err)
+    });
+  }
+
+  private async fetchPostMedia(): Promise<void> {
+    for (const post of this.postsFinal) {
       if (!post.media) {
-        // Fetch dynamic image based on description if no media is provided
-        post.media = await this.imageService.getImageForPost(post.description);
+        try {
+          post.media = await this.imageService.getImageForPost(post.description);
+        } catch (err) {
+          console.error(`Failed to fetch media for post ID: ${post.id}`, err);
+        }
       }
     }
-    this.posts = this.postsFinal;
-
+    this.posts = [...this.postsFinal];
   }
 
   set text(value: string) {
-    this.filterText = value;
-    this.postsFinal = this.posts.filter(
-      x => x.description.toLowerCase().includes(value));
-
+    this.filterText = value.toLowerCase();
+    this.postsFinal = this.posts.filter((post) =>
+      post.description.toLowerCase().includes(this.filterText)
+    );
   }
 
-  getUserInitials(fullName: string): string {
-    if (!fullName) return '';
-
-    const names = fullName.split(' ');
-    const initials = names.map(name => name.charAt(0).toUpperCase());
-    return initials.length > 1 ? initials[0] + initials[1] : initials[0];
+  get text(): string {
+    return this.filterText;
   }
+
   onAvatarClick(event: MouseEvent): void {
     event.stopPropagation();
   }
@@ -71,55 +77,48 @@ export class PostsListComponent implements OnInit {
   onReactClick(event: MouseEvent): void {
     event.stopPropagation();
   }
+
   onLikeClick(event: MouseEvent, post: Post): void {
     post.liked = !post.liked;
-    console.log(post);
-    // Toggle the liked state
-    if (post.liked) {
-      post.interactions.likes++; // Increment likes if liked
-    } else {
-      post.interactions.likes--; // Decrement likes if unliked
-    }
-    event.stopPropagation();
+    post.interactions.likes += post.liked ? 1 : -1;
 
+    this.authService.updatePostById(post.id, post).subscribe({
+      next: () => console.log('Post updated successfully'),
+      error: (err) => console.error('Error updating post:', err)
+    });
+
+    event.stopPropagation();
   }
+
   onGridClick(event: MouseEvent): void {
     this.gridType = !this.gridType;
     event.stopPropagation();
   }
 
-  fetchCurrentUser(): void {
-    this.s.getCurrentUser().subscribe({
-      next: (user) => {
-        if (user) {
-          this.currentUser = user;
-        } else {
-          this.currentUser = null; // No user means guest
-        }
-      },
-      error: (err) => {
-        console.error('Failed to fetch current user:', err);
-      }
+  private fetchCurrentUser(): void {
+    this.authService.getCurrentUser().subscribe({
+      next: (user) => (this.currentUser = user || null),
+      error: (err) => console.error('Failed to fetch current user:', err)
     });
   }
-  deletePost(event: MouseEvent, postId: string): void {
-    const currPost = this.posts.find(post => post.id === postId);
-    const currentUsername = this.currentUser?.username || `GuestUser`;
 
-    if (currPost && currentUsername === currPost.username) {
-      if (confirm("Really?"))
-        this.s.deleteProduitById(postId).subscribe({
-          next: () => {
-            this.fetchPosts()
-            alert('Post deleted successfully!');
-          },
-          error: (err) => {
-            console.error('Failed to delete post:', err);
-            alert('Error deleting post. Please try again.');
-          }
-        })
+  deletePost(event: MouseEvent, postId: string): void {
+    const currentUsername = this.currentUser?.username || 'GuestUser';
+    const post = this.posts.find((p) => p.id === postId);
+
+    if (post && currentUsername === post.username && confirm('Are you sure you want to delete this post?')) {
+      this.authService.deletePostById(postId).subscribe({
+        next: () => {
+          this.fetchPosts();
+          alert('Post deleted successfully!');
+        },
+        error: (err) => {
+          console.error('Failed to delete post:', err);
+          alert('Error deleting post. Please try again.');
+        }
+      });
     }
+
     event.stopPropagation();
   }
 }
-

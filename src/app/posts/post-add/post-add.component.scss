@@ -1,9 +1,10 @@
 form {
   margin: 0;
-  max-width: 500px;
+  max-width: 789px;
   display: flex;
   align-items: start;
   justify-content: center;
+  background-color: var(--light-color);
   .user-avatar{
     margin-top: 15px;
     margin-right: -45px;
@@ -33,6 +34,7 @@ textarea {
   border: 1px grey solid !important;
   border-radius: 8px;
   background-color: var(--light-color) !important;
+  width: 100%;
   &:focus {
     border: none !important;
     box-shadow: 0px 0px 4px var(--color-1);

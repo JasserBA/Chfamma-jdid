@@ -11,9 +11,9 @@ import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: "full" },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '*', component: PageNotFoundComponent },
   { path: 'details/:id', component: PostDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },

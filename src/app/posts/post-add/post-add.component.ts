@@ -12,40 +12,48 @@ import { Post } from 'src/app/model/post';
 export class PostAddComponent implements OnInit {
   myForm!: FormGroup;
   currentUser: { username: string; fullname: string } | null = null;
+  imagePreview: string | ArrayBuffer | null = null;
+  initials = this.authService.getUserInitials;
 
-  constructor(private fbuilder: FormBuilder, private s: AuthService, private router: Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.addPostForm();
+    this.initializeForm();
     this.fetchCurrentUser();
   }
 
-  addPostForm(): void {
-    this.myForm = this.fbuilder.group({
-      description: [null, Validators.required],
+  private initializeForm(): void {
+    this.myForm = this.fb.group({
+      description: [null, [Validators.required]],
+      image: [null]
     });
   }
 
   add(): void {
+    if (this.myForm.invalid) {
+      alert('Please fill in the required fields.');
+      return;
+    }
+
     const newPost: Post = {
+      id: this.generateUniqueId(),
       username: this.currentUser?.username || 'GuestUser',
       fullname: this.currentUser?.fullname || 'Guest User',
       description: this.myForm.value.description,
-      media: '',
-      interactions: {
-        shares: 0,
-        comments: 0,
-        likes: 0,
-      },
+      media: this.imagePreview ? this.imagePreview.toString() : '',
+      interactions: { shares: 0, comments: 0, likes: 0 },
       liked: false,
-      id: this.generateUniqueId()
+      createdDate: new Date().getTime().toString()
     };
 
-    this.s.addPost(newPost).subscribe({
-      next: (data) => {
-        console.log('Post added:', data);
-        this.router.navigate(['/home']).then(() => window.location.reload());
+    this.authService.addPost(newPost).subscribe({
+      next: () => {
         alert('Post added successfully!');
+        this.router.navigate(['/']).then(() => window.location.reload());
       },
       error: (err) => {
         console.error('Failed to add post:', err);
@@ -54,23 +62,15 @@ export class PostAddComponent implements OnInit {
     });
   }
 
-  resizeTextarea(event: any): void {
-    const textarea = event.target;
+  resizeTextarea(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
     textarea.style.height = 'auto';
     textarea.style.height = `${textarea.scrollHeight}px`;
   }
 
-  fetchCurrentUser(): void {
-    this.s.getCurrentUser().subscribe({
-      next: (user) => {
-        if (user) {
-          console.log('Fetched user:', user);
-          this.currentUser = user;
-        } else {
-          console.warn('No logged-in user found. Defaulting to guest mode.');
-          this.currentUser = null;
-        }
-      },
+  private fetchCurrentUser(): void {
+    this.authService.getCurrentUser().subscribe({
+      next: (user) => (this.currentUser = user || null),
       error: (err) => {
         console.error('Failed to fetch current user:', err);
         alert('Error fetching user details. Please log in again.');
@@ -78,8 +78,7 @@ export class PostAddComponent implements OnInit {
     });
   }
 
-  generateUniqueId(): string {
-    return Math.random().toString(36).substring(2, 8); // Generate a random 6-character ID
+  private generateUniqueId(): string {
+    return Math.random().toString(36).substring(2, 8);
   }
-
 }
