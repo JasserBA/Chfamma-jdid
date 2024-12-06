@@ -8,7 +8,8 @@
     "interactions": {
       "shares": 12,
       "comments": 5,
-      "likes": 35
+      "likes": 35,
+      "liked":false
     }
   },
   {
@@ -19,7 +20,8 @@
     "interactions": {
       "shares": 20,
       "comments": 15,
-      "likes": 60
+      "likes": 60,
+      "liked":false
     }
   },
   {
@@ -30,7 +32,8 @@
     "interactions": {
       "shares": 18,
       "comments": 30,
-      "likes": 75
+      "likes": 75,
+      "liked":false
     }
   },
   {
@@ -41,7 +44,8 @@
     "interactions": {
       "shares": 25,
       "comments": 10,
-      "likes": 50
+      "likes": 50,
+      "liked":false
     }
   },
   {
@@ -52,7 +56,8 @@
     "interactions": {
       "shares": 10,
       "comments": 50,
-      "likes": 45
+      "likes": 45,
+      "liked":false
     }
   },
   {
@@ -63,7 +68,8 @@
     "interactions": {
       "shares": 40,
       "comments": 35,
-      "likes": 90
+      "likes": 90,
+      "liked":false
     }
   }]
   }

@@ -23,6 +23,9 @@ html {
   background-size: 60%;
   background-repeat: no-repeat;
   background-color: var(--light-color) !important;
+  &::-webkit-scrollbar {
+      display: none;
+    }
 }
 *::selection{
   background-color: var(--color-2);

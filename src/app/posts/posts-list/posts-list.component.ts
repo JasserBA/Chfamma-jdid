@@ -56,4 +56,29 @@ export class PostsListComponent implements OnInit {
     const initials = names.map(name => name.charAt(0).toUpperCase());
     return initials.length > 1 ? initials[0] + initials[1] : initials[0];
   }
+  onAvatarClick(event: MouseEvent): void {
+    event.stopPropagation();
+  }
+
+  onDotsClick(event: MouseEvent): void {
+    event.stopPropagation();
+  }
+
+  onReactClick(event: MouseEvent): void {
+    event.stopPropagation();
+  }
+  onLikeClick(event: MouseEvent, post: Post): void {
+    post.liked = !post.liked;
+    console.log(post);
+    // Toggle the liked state
+    if (post.liked) {
+      post.interactions.likes++; // Increment likes if liked
+    } else {
+      post.interactions.likes--; // Decrement likes if unliked
+    }
+    event.stopPropagation();
+
+  }
+
 }
+

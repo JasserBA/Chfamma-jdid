@@ -4,7 +4,11 @@ export interface Post {
   fullname: string;
   description: string;
   media?: string;
-  shares: number;
-  comments: number;
+  interactions: {
+    shares: number;
+    comments: number;
+    likes: number;
+  };
   likes: number;
+  liked?: boolean;
 }

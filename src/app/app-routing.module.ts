@@ -13,8 +13,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: "full" },
-  { path: '*', component: PageNotFoundComponent },
-  { path: 'post-details/:id', component: PostDetailsComponent },
+  { path: '**', component: PageNotFoundComponent },
+  { path: 'details/:id', component: PostDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'about', component: AboutComponent },

@@ -50,30 +50,6 @@
         border-radius: 4px;
         min-width: 380px;
         min-height: 510px;
-
-        // &::after {
-        //   z-index: 1000;
-        //   content: '';
-        //   position: absolute;
-        //   top: 0;
-        //   left: 50%;
-        //   width: 1px;
-        //   height: 100%;
-        //   transform: rotate(45deg);
-        //   background-color: var(--color-1);
-        // }
-
-        // &::before {
-        //   z-index: 1000;
-        //   content: '';
-        //   position: absolute;
-        //   top: 0%;
-        //   left: 50%;
-        //   width: 1px;
-        //   height: 100%;
-        //   transform: rotate(-45deg);
-        //   background-color: var(--color-1);
-        // }
       }
 
     }
@@ -90,7 +66,7 @@
 }
 
 
-.icon-wrapper {
+.icon-wrapper, .icon-grid {
   position: relative;
   display: inline-block;
   width: 25px;
@@ -108,19 +84,21 @@
 
 .share-icon-hover,
 .comment-icon-hover,
-.like-icon-hover{
+.like-icon-hover,
+.grid-1-icon-hover{
   opacity: 0;
 }
 
 .icon-wrapper:hover .icon {
   opacity: 0;
 }
+.icon-grid:active .icon {
+  opacity: 0;
+}
 
 .icon-wrapper:hover .share-icon-hover,
-.icon-wrapper:hover .share-icon-hover,
 .icon-wrapper:hover .comment-icon-hover,
-.icon-wrapper:hover .comment-icon-hover,
-.icon-wrapper:hover .like-icon-hover,
-.icon-wrapper:hover .like-icon-hover{
+.icon-wrapper:hover .like-icon-hover
+{
   opacity: 1;
 }

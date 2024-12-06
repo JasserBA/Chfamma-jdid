@@ -1,9 +1,19 @@
 <div class="container">
-  <div class="card mb-2" *ngFor="let post of posts">
+  <div class="part-reacts">
+    <div class="text-center">
+      <a class="icon-grid">
+        <img src="../../../assets/imgs/icons/grid-1.svg" alt="Grid-1 Icon" class="icon">
+        <img src="../../../assets/imgs/icons/grid-1-selected.svg" alt="Selected Grid-1 Icon" class="grid-1-icon-hover">
+      </a>
+    </div>
+  </div>
+  <app-post-add></app-post-add>
+  <div class="card mb-2" *ngFor="let post of posts" routerLink="/details/{{ post.id }}">
     <div class="card-body">
       <div class="card-header border-0">
         <div class="card-group">
-          <div class="user-avatar"><span>{{ getUserInitials(post.fullname) }}</span>
+          <div class="user-avatar" (click)="onAvatarClick($event)">
+            <span>{{ getUserInitials(post.fullname) }}</span>
           </div>
           <div class="card-title m-0">
             <span><b>{{ post.fullname }}</b></span>
@@ -19,30 +29,32 @@
       </div>
     </div>
     <aside>
-      <a>
-        <img src="../../../assets/imgs/icons/dots.svg" alt="dots">
+      <a (click)="onDotsClick($event)">
+        <img src="../../../assets/imgs/icons/dots.svg" alt="Dots Icon">
       </a>
       <div class="part-reacts">
         <div class="text-center">
-          <a href="" class="icon-wrapper">
+          <a (click)="onReactClick($event)" class="icon-wrapper">
             <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon">
-            <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon" class="icon-hover">
+            <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon" class="share-icon-hover">
           </a>
-          <span class="m-0">{{ post.shares }}</span>
+          <span class="m-0">{{ post.interactions.shares }}</span>
         </div>
         <div class="text-center">
-          <a href="" class="icon-wrapper">
+          <a (click)="onReactClick($event)" class="icon-wrapper">
             <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
-            <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon" class="icon-hover">
+            <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon"
+              class="comment-icon-hover">
           </a>
-          <span class="m-0">{{ post.comments }}</span>
+          <span class="m-0">{{ post.interactions.comments }}</span>
         </div>
         <div class="text-center">
-          <a href="" class="icon-wrapper">
-            <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon">
-            <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon" class="icon-hover">
+          <a (click)="onLikeClick($event,post)" class="icon-wrapper">
+            <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon" class="icon">
+            <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon"
+              [ngClass]="{ 'like-icon-hover': !post.liked }">
           </a>
-          <span class="m-0">{{ post.likes }}</span>
+          <span class="m-0">{{ post.interactions.likes }}</span>
         </div>
       </div>
     </aside>

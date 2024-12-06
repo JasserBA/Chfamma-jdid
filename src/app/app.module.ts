@@ -18,6 +18,7 @@ import { PostsListComponent } from './posts/posts-list/posts-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostAddComponent } from './posts/post-add/post-add.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     PostDetailsComponent,
     PostsListComponent,
-    ContactComponent
+    ContactComponent,
+    PostAddComponent
   ],
   imports: [
     BrowserModule,
