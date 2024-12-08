@@ -18,20 +18,24 @@ $theme-colors: (
 
 
 html {
-  background-image: url('./assets/imgs/gradient_full-bg.svg');
-  background-position: -70% -40%;
+  background-image: url('./assets/imgs/gradient-bg.svg');
+  background-position: top left;
+  /* Top-left corner */
   background-size: 60%;
   background-repeat: no-repeat;
   background-color: var(--light-color) !important;
+  background-attachment: fixed;
+  /* Ensures the background stays fixed */
+
   &::-webkit-scrollbar {
-      display: none;
-    }
+    display: none;
+  }
 }
-*::selection{
+
+*::selection {
   background-color: var(--color-2);
   color: var(--light-color);
 }
-
 /*body::before{
     content: '';
     display: block;
