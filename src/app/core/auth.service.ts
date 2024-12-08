@@ -37,6 +37,13 @@ export class AuthService {
     );
   }
 
+  logOutCurrentUser(): Observable<User | null> {
+    return this.http.put<User | null>(`${this.currentUserApiURL}`, {
+      username: null,
+      fullname: null
+    });
+  }
+
   getUserInitials(fullName: string): string {
     if (!fullName) return '';
     const names = fullName.split(' ');

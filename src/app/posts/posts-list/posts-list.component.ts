@@ -22,8 +22,6 @@ export class PostsListComponent implements OnInit {
     { icon: 'assets/imgs/icons/like.svg', hoverIcon: 'assets/imgs/icons/like-hovered.svg', alt: 'Like Icon', nb: '22' }
   ];
 
-  sortOrder: 'Newest to Oldest' | 'Oldest to Newest' = 'Newest to Oldest';
-
   constructor(private authService: AuthService, private imageService: ImageService) { }
 
   ngOnInit(): void {
@@ -66,15 +64,7 @@ export class PostsListComponent implements OnInit {
     return this.filterText;
   }
 
-  onAvatarClick(event: MouseEvent): void {
-    event.stopPropagation();
-  }
-
-  onDotsClick(event: MouseEvent): void {
-    event.stopPropagation();
-  }
-
-  onReactClick(event: MouseEvent): void {
+  onPreventClick(event: MouseEvent): void {
     event.stopPropagation();
   }
 

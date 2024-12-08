@@ -15,7 +15,23 @@
         placeholder="Lawej 7eja..." aria-label="Search" autocomplete="off">
     </form>
 
-    <button class="btn btn-outline-primary  my-2 my-sm-0 rounded-pill" routerLink="/login"
-      title="Login Now!">Login</button>
+    <button class="btn btn-outline-primary  my-2 my-sm-0 rounded-pill" routerLink="/login" title="Login Now!"
+      *ngIf="!currentUser || !currentUser.fullname">Login</button>
+    <div class="card position-relative w-auto" *ngIf="currentUser && currentUser.fullname">
+      <div class="card-group" (click)="toggleDropdown($event)">
+        <div class="user-avatar">
+          <span>{{ initials(currentUser.fullname) }}</span>
+        </div>
+        <div class="card-title m-0">
+          <span><b>{{ currentUser.fullname }}</b></span>
+          <div class="card-subtitle"><small>@{{ currentUser.username }}</small></div>
+        </div>
+
+        <div *ngIf="dropdownVisible" class="dropdownMenu position-absolute" style="top: 120%; right: 0; z-index: 1000;">
+          <a routerLink="/profile" title="View Profile">View Profile</a>
+          <a (click)="onLogout()">Log Out</a>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>

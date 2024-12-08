@@ -121,13 +121,13 @@
       "username": "GuestUser",
       "fullname": "Guest User",
       "description": "football club ",
-      "media": "",
+      "media": "https://images.unsplash.com/photo-1624880357913-a8539238245b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxmb290YmFsbHxlbnwwfHx8fDE3MzM2MTYzNTN8MA&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
         "shares": 0,
         "comments": 0,
-        "likes": 0
+        "likes": 1
       },
-      "liked": false,
+      "liked": true,
       "createdDate": "1733513198792"
     },
     {

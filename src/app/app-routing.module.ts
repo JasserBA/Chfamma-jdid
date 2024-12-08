@@ -9,6 +9,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { TermsPoliciesComponent } from './pages/terms-policies/terms-policies.component';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'terms-policies', component: TermsPoliciesComponent },
   { path: 'privacy', component: PrivacyComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'contact', component: ContactComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

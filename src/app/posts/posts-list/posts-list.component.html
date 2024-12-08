@@ -20,7 +20,7 @@
     <div class="card-body">
       <div class="card-header border-0">
         <div class="card-group">
-          <div class="user-avatar" (click)="onAvatarClick($event)">
+          <div class="user-avatar" (click)="onPreventClick($event)">
             <span>{{ initials(post.fullname)}}</span>
           </div>
           <div class="card-title m-0">
@@ -42,14 +42,14 @@
       </a>
       <div class="part-reacts">
         <div class="text-center">
-          <a (click)="onReactClick($event)" class="icon-wrapper">
+          <a (click)="onPreventClick($event)" class="icon-wrapper">
             <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon">
             <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon" class="share-icon-hover">
           </a>
           <span class="m-0">{{ post.interactions.shares }}</span>
         </div>
         <div class="text-center">
-          <a (click)="onReactClick($event)" class="icon-wrapper">
+          <a (click)="onPreventClick($event)" class="icon-wrapper">
             <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
             <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon"
               class="comment-icon-hover">
