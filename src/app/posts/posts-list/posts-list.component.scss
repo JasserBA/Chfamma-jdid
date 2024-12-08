@@ -94,6 +94,10 @@
       font-size: 12px !important;
     }
   }
+  transition: background-color ease .3s;
+  &:hover{
+    background-color: var(--white)!important;
+  }
   }
 }
 
