@@ -22,7 +22,6 @@
         input {
             border: 1px grey solid !important;
             &:focus {
-              border: none !important;
               box-shadow: 0px 0px 4px var(--color-1);
               background-color: var(--white) !important;
             }

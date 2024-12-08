@@ -35,7 +35,6 @@ textarea {
   background-color: var(--light-color) !important;
   width: 100%;
   &:focus {
-    border: none !important;
     box-shadow: 0px 0px 4px var(--color-1);
     background-color: var(--white) !important;
   }
