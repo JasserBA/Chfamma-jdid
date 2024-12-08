@@ -26,20 +26,22 @@ export class NavbarComponent implements OnInit {
   onPreventClick(event: MouseEvent): void {
     event.stopPropagation();
   }
+
   toggleDropdown(event: Event) {
-    event.stopPropagation(); // Prevent closing when clicking inside the dropdown
+    event.stopPropagation();
     this.dropdownVisible = !this.dropdownVisible;
   }
+
   @HostListener('document:click')
   closeDropdown(): void {
-    this.dropdownVisible = false; // Close dropdown when clicking outside
+    this.dropdownVisible = false;
   }
+
   onLogout() {
     this.authService.logOutCurrentUser().subscribe({
       next: () => (console.log("done")),
       error: (err) => console.error('Failed to Log out current user:', err)
     });
-    // Add your logout logic here, e.g., clearing user data, redirecting to login page
     console.log('Logging out...');
     this.router.navigate(['/']).then(() => window.location.reload())
   }
