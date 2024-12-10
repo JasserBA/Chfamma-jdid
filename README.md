@@ -1,6 +1,8 @@
 # Chfamma-Jdid
 
-![Logo](src/assets/imgs/logo.svg)
+<div style="background-color: white; padding: 10px; display: inline-block;">
+  <img src="logo.svg" alt="Logo" />
+</div>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
