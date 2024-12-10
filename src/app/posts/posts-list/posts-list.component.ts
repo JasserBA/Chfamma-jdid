@@ -16,6 +16,7 @@ export class PostsListComponent implements OnInit {
   currentUser: { username: string; fullname: string } | null = null;
   initials = this.authService.getUserInitials;
   dropdownVisible: boolean = false;
+  toggleGrid: string = "grid-1";
   actions = [
     { icon: 'assets/imgs/icons/share.svg', hoverIcon: 'assets/imgs/icons/share-hovered.svg', alt: 'Share Icon', nb: '5' },
     { icon: 'assets/imgs/icons/comment.svg', hoverIcon: 'assets/imgs/icons/comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
@@ -80,8 +81,9 @@ export class PostsListComponent implements OnInit {
     event.stopPropagation();
   }
 
-  onGridClick(event: MouseEvent): void {
-    this.gridType = !this.gridType;
+  onGridClick(event: MouseEvent, currentGrid: string): void {
+    this.gridType = currentGrid === 'grid-1' ? false : true;
+    this.toggleGrid = currentGrid;
     event.stopPropagation();
   }
 

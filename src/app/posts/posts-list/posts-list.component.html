@@ -1,13 +1,13 @@
 <div class="posts">
   <div class="part-reacts">
     <div class="grid">
-      <a class="icon-grid" (click)="onGridClick($event)">
+      <a class="icon-grid" (click)="onGridClick($event, 'grid-1')">
         <img src="../../../assets/imgs/icons/grid-1.svg" alt="Grid-1 Icon" class="icon"
           [ngStyle]="{'opacity': !gridType ? '0' : null}">
         <img src="../../../assets/imgs/icons/grid-1-selected.svg" alt="Selected Grid-1 Icon" class="grid-1-icon-hover"
           [ngClass]="{ 'grid-1-icon-hover': gridType }">
       </a>
-      <a class="icon-grid " (click)="onGridClick($event)">
+      <a class="icon-grid" (click)="onGridClick($event, 'grid-2')">
         <img src="../../../assets/imgs/icons/grid-2.svg" alt="Grid-2 Icon" class="icon"
           [ngStyle]="{'opacity': gridType ? '0' : null}">
         <img src="../../../assets/imgs/icons/grid-2-selected.svg" alt="Selected Grid-2 Icon" class="grid-2-icon-hover"
@@ -15,65 +15,136 @@
       </a>
     </div>
   </div>
+
   <app-post-add></app-post-add>
-  <div class="card" *ngFor="let post of posts" routerLink="/details/{{ post.id }}">
-    <div class="card-body">
-      <div class="card-header border-0">
-        <div class="card-group">
-          <div class="user-avatar" (click)="onPreventClick($event)">
-            <span>{{ initials(post.fullname)}}</span>
+
+  <ng-container *ngIf="toggleGrid === 'grid-1'">
+    <div class="cards-1">
+      <div class="card" *ngFor="let post of posts" routerLink="/details/{{ post.id }}">
+        <div class="card-body">
+          <div class="card-header border-0">
+            <div class="card-group">
+              <div class="user-avatar" (click)="onPreventClick($event)">
+                <span>{{ initials(post.fullname) }}</span>
+              </div>
+              <div class="card-title m-0">
+                <b>{{ post.fullname }}</b>
+                <div class="card-subtitle"><small>@{{ post.username }}</small></div>
+              </div>
+            </div>
+            <div class="description">
+              <p class="m-0">{{ post.description }}</p>
+            </div>
           </div>
-          <div class="card-title m-0">
-            <span><b>{{ post.fullname }}</b></span>
-            <div class="card-subtitle"><small>@{{ post.username }}</small></div>
+          <div class="card-footer" *ngIf="post.media">
+            <img [src]="post.media" alt="Post Media">
           </div>
         </div>
-        <div class="description">
-          <p class="m-0">{{ post.description }}</p>
-        </div>
-      </div>
-      <div class='card-footer' *ngIf="post.media">
-        <img [src]="post.media" alt="Post Media">
+
+        <aside>
+          <a (click)="deletePost($event, post.id)">
+            <img src="../../../assets/imgs/icons/dots.svg" alt="Dots Icon">
+          </a>
+          <div class="part-reacts">
+            <div class="text-center position-relative w-100" [title]="!post.shared ? 'Share it' : 'Shared!'">
+              <a (click)="onPreventClick($event)" class="icon-wrapper" (click)="toggleDropdown($event, post.id)">
+                <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon">
+                <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon"
+                  [ngClass]="{ 'share-icon-hover': !post.shared }">
+              </a>
+              <span class="m-0">{{ post.interactions.shares }}</span>
+
+              <div *ngIf="post.dropdownVisible" class="dropdownMenu position-absolute bottom-100 end-0"
+                (click)="copyPostURL($event, post.id, post)">
+                <a title="Copy post Link">Copy URL <img src="../../../assets/imgs/icons/copy.svg" alt="Copy URL"></a>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <a (click)="onPreventClick($event)" class="icon-wrapper" title="View comments">
+                <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
+                <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon"
+                  class="comment-icon-hover">
+              </a>
+              <span class="m-0">{{ post.interactions.comments }}</span>
+            </div>
+
+            <div class="text-center" [title]="!post.liked ? 'Like it' : 'Liked!'">
+              <a (click)="onLikeClick($event, post)" class="icon-wrapper">
+                <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon">
+                <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon"
+                  [ngClass]="{ 'like-icon-hover': !post.liked }">
+              </a>
+              <span class="m-0">{{ post.interactions.likes }}</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
-    <aside>
-      <a (click)="deletePost($event,post.id)">
-        <img src="../../../assets/imgs/icons/dots.svg" alt="Dots Icon">
-      </a>
-      <div class="part-reacts">
-        <div class="text-center position-relative w-100" [title]="!post.shared ? 'Share it' : 'Shared!'">
-          <a (click)="onPreventClick($event)" class="icon-wrapper" (click)="toggleDropdown($event,post.id)">
-            <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon" class="icon">
-            <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon"
-              [ngClass]="{ 'share-icon-hover': !post.shared }"> </a>
-          <span class="m-0">{{ post.interactions.shares }}</span>
+  </ng-container>
 
-          <div *ngIf="post.dropdownVisible" class="dropdownMenu position-absolute"
-            style="bottom: 100%; right: 0; z-index: 1000; width: max-content;"
-            (click)="copyPostURL($event, post.id,post)">
-            <a title="Copy post Link" style="gap:7px">Copy URL <img src="../../../assets/imgs/icons/copy.svg"
-                alt="Copy URL">
-            </a>
+  <ng-container *ngIf="toggleGrid === 'grid-2'">
+    <div class="cards-2">
+      <div class="card" *ngFor="let post of posts" routerLink="/details/{{ post.id }}">
+        <div class="card-body">
+          <div class="card-header border-0">
+            <div class="card-group">
+              <div class="user-avatar" (click)="onPreventClick($event)">
+                <span>{{ initials(post.fullname) }}</span>
+              </div>
+              <div class="card-title m-0">
+                <b>{{ post.fullname }}</b>
+                <div class="card-subtitle"><small>@{{ post.username }}</small></div>
+              </div>
+            </div>
+            <div class="description">
+              <p class="m-0">{{ post.description }}</p>
+            </div>
+          </div>
+          <div class="card-footer" *ngIf="post.media">
+            <img [src]="post.media" alt="Post Media">
           </div>
         </div>
 
-        <div class="text-center">
-          <a (click)="onPreventClick($event)" class="icon-wrapper" title="View comments">
-            <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
-            <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon"
-              class="comment-icon-hover">
+        <aside>
+          <a (click)="deletePost($event, post.id)">
+            <img src="../../../assets/imgs/icons/dots.svg" alt="Dots Icon">
           </a>
-          <span class="m-0">{{ post.interactions.comments }}</span>
-        </div>
-        <div class="text-center" [title]="!post.liked ? 'Like it' : 'Liked!'">
-          <a (click)="onLikeClick($event,post)" class="icon-wrapper">
-            <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon" class="icon">
-            <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon"
-              [ngClass]="{ 'like-icon-hover': !post.liked }">
-          </a>
-          <span class="m-0">{{ post.interactions.likes }}</span>
-        </div>
+          <div class="part-reacts">
+            <div class="text-center position-relative w-100" [title]="!post.shared ? 'Share it' : 'Shared!'">
+              <a (click)="onPreventClick($event)" class="icon-wrapper" (click)="toggleDropdown($event, post.id)">
+                <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon">
+                <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon"
+                  [ngClass]="{ 'share-icon-hover': !post.shared }">
+              </a>
+              <span class="m-0">{{ post.interactions.shares }}</span>
+
+              <div *ngIf="post.dropdownVisible" class="dropdownMenu position-absolute bottom-100 end-0"
+                (click)="copyPostURL($event, post.id, post)">
+                <a title="Copy post Link">Copy URL <img src="../../../assets/imgs/icons/copy.svg" alt="Copy URL"></a>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <a (click)="onPreventClick($event)" class="icon-wrapper" title="View comments">
+                <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
+                <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon"
+                  class="comment-icon-hover">
+              </a>
+              <span class="m-0">{{ post.interactions.comments }}</span>
+            </div>
+
+            <div class="text-center" [title]="!post.liked ? 'Like it' : 'Liked!'">
+              <a (click)="onLikeClick($event, post)" class="icon-wrapper">
+                <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon">
+                <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon"
+                  [ngClass]="{ 'like-icon-hover': !post.liked }">
+              </a>
+              <span class="m-0">{{ post.interactions.likes }}</span>
+            </div>
+          </div>
+        </aside>
       </div>
-    </aside>
-  </div>
+    </div>
+  </ng-container>
 </div>
