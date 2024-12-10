@@ -9,6 +9,7 @@ export interface Post {
     comments: number;
     likes: number;
   };
+  shared?: boolean,
   liked?: boolean,
   createdDate: string;
   dropdownVisible: boolean;

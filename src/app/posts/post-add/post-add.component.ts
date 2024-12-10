@@ -46,6 +46,7 @@ export class PostAddComponent implements OnInit {
       description: this.myForm.value.description,
       media: this.imagePreview ? this.imagePreview.toString() : '',
       interactions: { shares: 0, comments: 0, likes: 0 },
+      shared: false,
       liked: false,
       createdDate: new Date().getTime().toString(),
       dropdownVisible: false

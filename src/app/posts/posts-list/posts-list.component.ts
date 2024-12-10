@@ -121,4 +121,32 @@ export class PostsListComponent implements OnInit {
   closeDropdown(): void {
     this.posts.forEach(p => p.dropdownVisible = false);
   }
+
+  copyPostURL(event: Event, postId: string, post: Post) {
+    event.stopPropagation();
+
+    if (post.shared) {
+      alert('URL already copied!');
+      this.posts.forEach(p => p.dropdownVisible = false);
+      return;
+    }
+
+    const postUrl = `${window.location.origin}/details/${postId}`;
+    navigator.clipboard.writeText(postUrl).then(() => {
+      alert('URL copied! ' + postUrl);
+
+      post.shared = true;
+      post.interactions.shares += 1;
+
+      this.authService.updatePostURLById(postId, post).subscribe({
+        next: () => console.log('Shared updated successfully'),
+        error: (err) => console.error('Error updating post:', err)
+      });
+    }).catch(err => {
+      console.error('FAILED copy URL:', err);
+    });
+
+    this.posts.forEach(p => p.dropdownVisible = false);
+  }
+
 }

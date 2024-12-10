@@ -10,10 +10,11 @@
       "description": "Just discovered a powerful Angular library for forms validation. Highly recommend checking out @angular/forms for reactive forms! 🚀",
       "media": "https://images.unsplash.com/photo-1496449903678-68ddcb189a24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxKdXN0fGVufDB8fHx8MTczMzQ4Mzg2OXww&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
-        "shares": 12,
+        "shares": 14,
         "comments": 5,
         "likes": 36
       },
+      "shared": true,
       "liked": true,
       "id": "2d41",
       "timestamp": 1702144566000,
@@ -25,10 +26,11 @@
       "description": "Tunisia is becoming a hub for tech startups! Check out these top incubators for your next project. 🖥️",
       "media": "images/startup_tunisia.jpg",
       "interactions": {
-        "shares": 20,
+        "shares": 21,
         "comments": 15,
         "likes": 61
       },
+      "shared": true,
       "liked": true,
       "id": "fa76",
       "timestamp": 1702605120000,
@@ -44,6 +46,7 @@
         "comments": 30,
         "likes": 75
       },
+      "shared": false,
       "liked": false,
       "id": "454b",
       "timestamp": 1703104591000,
@@ -57,12 +60,13 @@
       "interactions": {
         "shares": 25,
         "comments": 10,
-        "likes": 50
+        "likes": 49
       },
+      "shared": true,
       "liked": false,
       "id": "0542",
       "timestamp": 1703576192000,
-      "dropdownVisible": false
+      "dropdownVisible": true
     },
     {
       "username": "CloudyTn",
@@ -74,6 +78,7 @@
         "comments": 50,
         "likes": 45
       },
+      "shared": false,
       "liked": false,
       "id": "da39",
       "timestamp": 1704163123000,
@@ -90,6 +95,7 @@
         "comments": 0,
         "likes": 0
       },
+      "shared": false,
       "liked": false,
       "timestamp": 1705234759000,
       "dropdownVisible": false
@@ -103,11 +109,12 @@
       "interactions": {
         "shares": 0,
         "comments": 0,
-        "likes": 1
+        "likes": 3
       },
+      "shared": false,
       "liked": true,
       "timestamp": 1733512983690,
-      "dropdownVisible": false
+      "dropdownVisible": true
     },
     {
       "id": "g61fzu",
@@ -120,6 +127,7 @@
         "comments": 0,
         "likes": 0
       },
+      "shared": false,
       "liked": false,
       "timestamp": 1733513186425,
       "dropdownVisible": false
@@ -135,6 +143,7 @@
         "comments": 0,
         "likes": 1
       },
+      "shared": false,
       "liked": true,
       "timestamp": 1733513198792,
       "dropdownVisible": false
@@ -150,6 +159,7 @@
         "comments": 0,
         "likes": 1
       },
+      "shared": false,
       "liked": true,
       "timestamp": 1733514574458,
       "dropdownVisible": false
@@ -165,6 +175,7 @@
         "comments": 0,
         "likes": 1
       },
+      "shared": false,
       "liked": true,
       "timestamp": 1733514701091,
       "dropdownVisible": false
