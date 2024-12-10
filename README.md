@@ -1,6 +1,6 @@
 # Chfamma-Jdid
 
-![Logo](src/assets/imgs/logo-READMEmd.png)
+![Logo](src/assets/imgs/logo-READMEmd.svg)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
