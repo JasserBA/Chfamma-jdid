@@ -11,4 +11,5 @@ export interface Post {
   };
   liked?: boolean,
   createdDate: string;
+  dropdownVisible: boolean;
 }

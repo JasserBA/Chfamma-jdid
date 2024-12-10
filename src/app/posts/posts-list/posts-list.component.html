@@ -41,22 +41,28 @@
         <img src="../../../assets/imgs/icons/dots.svg" alt="Dots Icon">
       </a>
       <div class="part-reacts">
-        <div class="text-center">
-          <a (click)="onPreventClick($event)" class="icon-wrapper">
+        <div class="text-center position-relative w-100">
+          <a (click)="onPreventClick($event)" class="icon-wrapper" (click)="toggleDropdown($event,post.id)">
             <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon">
             <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon" class="share-icon-hover">
           </a>
           <span class="m-0">{{ post.interactions.shares }}</span>
+
+          <div *ngIf="post.dropdownVisible" class="dropdownMenu position-absolute"
+            style="bottom: 100%; right: 0; z-index: 1000; width: max-content;">
+            <a title="Copy post Link">Copy URL <img src="../../../assets/imgs/icons/copy.svg" alt="Copy URL"> </a>
+          </div>
         </div>
+
         <div class="text-center">
-          <a (click)="onPreventClick($event)" class="icon-wrapper">
+          <a (click)="onPreventClick($event)" class="icon-wrapper" title="View comments">
             <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
             <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon"
               class="comment-icon-hover">
           </a>
           <span class="m-0">{{ post.interactions.comments }}</span>
         </div>
-        <div class="text-center">
+        <div class="text-center" [title]="!post.liked ? 'Like it' : 'Liked!'">
           <a (click)="onLikeClick($event,post)" class="icon-wrapper">
             <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon" class="icon">
             <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon"

@@ -16,7 +16,8 @@
       },
       "liked": true,
       "id": "2d41",
-      "timestamp": 1702144566000
+      "timestamp": 1702144566000,
+      "dropdownVisible": false
     },
     {
       "username": "TnTechie",
@@ -30,7 +31,8 @@
       },
       "liked": true,
       "id": "fa76",
-      "timestamp": 1702605120000
+      "timestamp": 1702605120000,
+      "dropdownVisible": false
     },
     {
       "username": "HoussemDev",
@@ -44,7 +46,8 @@
       },
       "liked": false,
       "id": "454b",
-      "timestamp": 1703104591000
+      "timestamp": 1703104591000,
+      "dropdownVisible": false
     },
     {
       "username": "Nour_IT",
@@ -58,7 +61,8 @@
       },
       "liked": false,
       "id": "0542",
-      "timestamp": 1703576192000
+      "timestamp": 1703576192000,
+      "dropdownVisible": false
     },
     {
       "username": "CloudyTn",
@@ -72,27 +76,29 @@
       },
       "liked": false,
       "id": "da39",
-      "timestamp": 1704163123000
+      "timestamp": 1704163123000,
+      "dropdownVisible": false
     },
     {
       "id": "utjwtd",
       "username": "GuestUser",
       "fullname": "Guest User",
-      "description": "calma\n",
-      "media": "",
+      "description": "calma",
+      "media": null,
       "interactions": {
         "shares": 0,
         "comments": 0,
         "likes": 0
       },
       "liked": false,
-      "timestamp": 1705234759000
+      "timestamp": 1705234759000,
+      "dropdownVisible": false
     },
     {
       "id": "bbax5f",
       "username": "GuestUser",
       "fullname": "Guest User",
-      "description": "south\n",
+      "description": "south",
       "media": "https://images.unsplash.com/photo-1579377204611-a99b7d1263a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxzb3V0aCUwQXxlbnwwfHx8fDE3MzM1MTI5OTB8MA&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
         "shares": 0,
@@ -100,27 +106,29 @@
         "likes": 1
       },
       "liked": true,
-      "createdDate": "1733512983690"
+      "timestamp": 1733512983690,
+      "dropdownVisible": false
     },
     {
       "id": "g61fzu",
       "username": "GuestUser",
       "fullname": "Guest User",
       "description": "real madrid",
-      "media": "",
+      "media": null,
       "interactions": {
         "shares": 0,
         "comments": 0,
         "likes": 0
       },
       "liked": false,
-      "createdDate": "1733513186425"
+      "timestamp": 1733513186425,
+      "dropdownVisible": false
     },
     {
       "id": "mjmiil",
       "username": "GuestUser",
       "fullname": "Guest User",
-      "description": "football club ",
+      "description": "football club",
       "media": "https://images.unsplash.com/photo-1624880357913-a8539238245b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxmb290YmFsbHxlbnwwfHx8fDE3MzM2MTYzNTN8MA&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
         "shares": 0,
@@ -128,7 +136,8 @@
         "likes": 1
       },
       "liked": true,
-      "createdDate": "1733513198792"
+      "timestamp": 1733513198792,
+      "dropdownVisible": false
     },
     {
       "id": "9u1v3b",
@@ -142,7 +151,8 @@
         "likes": 1
       },
       "liked": true,
-      "createdDate": "1733514574458"
+      "timestamp": 1733514574458,
+      "dropdownVisible": false
     },
     {
       "id": "q9joh4",
@@ -156,7 +166,8 @@
         "likes": 1
       },
       "liked": true,
-      "createdDate": "1733514701091"
+      "timestamp": 1733514701091,
+      "dropdownVisible": false
     }
   ]
 }

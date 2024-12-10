@@ -17,8 +17,8 @@
 
     <button class="btn btn-outline-primary  my-2 my-sm-0 rounded-pill" routerLink="/login" title="Login Now!"
       *ngIf="!currentUser || !currentUser.fullname">Login</button>
-    <div class="card position-relative w-auto" *ngIf="currentUser && currentUser.fullname">
-      <div class="card-group" (click)="toggleDropdown($event)">
+    <div class="card position-relative" *ngIf="currentUser && currentUser.fullname" (click)="toggleDropdown($event)">
+      <div class="card-group">
         <div class="user-avatar">
           <span>{{ initials(currentUser.fullname) }}</span>
         </div>

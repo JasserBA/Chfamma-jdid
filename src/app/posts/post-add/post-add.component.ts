@@ -47,7 +47,8 @@ export class PostAddComponent implements OnInit {
       media: this.imagePreview ? this.imagePreview.toString() : '',
       interactions: { shares: 0, comments: 0, likes: 0 },
       liked: false,
-      createdDate: new Date().getTime().toString()
+      createdDate: new Date().getTime().toString(),
+      dropdownVisible: false
     };
 
     this.authService.addPost(newPost).subscribe({

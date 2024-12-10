@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
 import { Post } from 'src/app/model/post';
 import { ImageService } from 'src/app/core/image-service.service';
@@ -15,7 +15,7 @@ export class PostsListComponent implements OnInit {
   filterText = '';
   currentUser: { username: string; fullname: string } | null = null;
   initials = this.authService.getUserInitials;
-
+  dropdownVisible: boolean = false;
   actions = [
     { icon: 'assets/imgs/icons/share.svg', hoverIcon: 'assets/imgs/icons/share-hovered.svg', alt: 'Share Icon', nb: '5' },
     { icon: 'assets/imgs/icons/comment.svg', hoverIcon: 'assets/imgs/icons/comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
@@ -110,5 +110,15 @@ export class PostsListComponent implements OnInit {
     }
 
     event.stopPropagation();
+  }
+
+  toggleDropdown(event: Event, postId: string) {
+    event.stopPropagation();
+    this.posts.forEach(p => p.dropdownVisible = p.id === postId ? !p.dropdownVisible : false);
+  }
+
+  @HostListener('document:click')
+  closeDropdown(): void {
+    this.posts.forEach(p => p.dropdownVisible = false);
   }
 }
