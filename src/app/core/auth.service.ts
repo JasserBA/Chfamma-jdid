@@ -55,7 +55,4 @@ export class AuthService {
     return this.http.put<void>(`${this.apiURL}/${id}`, updatedPost);
   }
 
-  updatePostURLById(id: string, updatedPost: Post): Observable<void> {
-    return this.http.put<void>(`${this.apiURL}/${id}`, updatedPost);
-  }
 }

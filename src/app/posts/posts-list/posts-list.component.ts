@@ -1,8 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth.service';
 import { Post } from 'src/app/model/post';
-import { ImageService } from 'src/app/core/image-service.service';
-
 @Component({
   selector: 'app-posts-list',
   templateUrl: './posts-list.component.html',
@@ -24,7 +22,7 @@ export class PostsListComponent implements OnInit {
     { icon: 'assets/imgs/icons/like.svg', hoverIcon: 'assets/imgs/icons/like-hovered.svg', alt: 'Like Icon', nb: '22' }
   ];
 
-  constructor(private authService: AuthService, private imageService: ImageService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.fetchPosts();
@@ -36,30 +34,10 @@ export class PostsListComponent implements OnInit {
       next: (posts) => {
         this.posts = posts.sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
         this.postsFinal = [...this.posts];
-        this.fetchPostMedia();
+        //this.fetchPostMedia();
       },
       error: (err) => console.error('Failed to fetch posts:', err)
     });
-  }
-
-  private async fetchPostMedia(): Promise<void> {
-    for (const post of this.postsFinal) {
-      if (!post.media) {
-        post.media = this.mediaURL
-        this.authService.updatePostById(post.id, post).subscribe({
-          next: () => console.log('Post updated successfully'),
-          error: (err) => console.error('Error updating post:', err)
-        });
-        try {
-          post.media = await this.imageService.getImageForPost(post.description);
-          console.log(post.media);
-          this.mediaURL = post.media
-        } catch (err) {
-          console.error(`Failed to fetch media for post ID: ${post.id}`, err);
-        }
-      }
-    }
-    this.posts = [...this.postsFinal];
   }
 
   set text(value: string) {
@@ -147,7 +125,7 @@ export class PostsListComponent implements OnInit {
       post.shared = true;
       post.interactions.shares += 1;
 
-      this.authService.updatePostURLById(postId, post).subscribe({
+      this.authService.updatePostById(postId, post).subscribe({
         next: () => console.log('Shared updated successfully'),
         error: (err) => console.error('Error updating post:', err)
       });

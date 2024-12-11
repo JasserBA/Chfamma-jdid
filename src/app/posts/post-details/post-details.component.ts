@@ -46,7 +46,7 @@ export class PostDetailsComponent {
   private fetchPosts(): void {
     this.authService.getAllPosts().subscribe({
       next: (posts) => {
-        this.posts = posts.sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
+        this.posts = posts.filter(post => post.id);
         this.postsFinal = [...this.posts];
       },
       error: (err) => console.error('Failed to fetch posts:', err)
@@ -122,7 +122,7 @@ export class PostDetailsComponent {
       post.shared = true;
       post.interactions.shares += 1;
 
-      this.authService.updatePostURLById(postId, post).subscribe({
+      this.authService.updatePostById(postId, post).subscribe({
         next: () => console.log('Shared updated successfully'),
         error: (err) => console.error('Error updating post:', err)
       });
@@ -132,5 +132,4 @@ export class PostDetailsComponent {
 
     this.posts.forEach(p => p.dropdownVisible = false);
   }
-
 }
