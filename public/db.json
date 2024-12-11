@@ -12,28 +12,19 @@
       "media": "https://images.unsplash.com/photo-1722096703718-a04f14ecde52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHx4JTBBfGVufDB8fHx8MTczMzkyMzE4N3ww&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
         "shares": 0,
-        "comments": 0,
+        "comments": 1,
         "likes": 0
       },
+      "comments": [
+        {
+          "username": "JohnDoe",
+          "fullname": "John Doe",
+          "description": "Great picture! What camera did you use?"
+        }
+      ],
       "shared": false,
       "liked": false,
       "createdDate": "2024-12-11T13:19:45.689Z",
-      "dropdownVisible": false
-    },
-    {
-      "id": "fxonz0",
-      "username": "GuestUser",
-      "fullname": "Guest User",
-      "description": "se",
-      "media": "https://images.unsplash.com/photo-1642961249179-00c45303ef7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxzZXxlbnwwfHx8fDE3MzM5MjMyMTh8MA&ixlib=rb-4.0.3&q=80&w=1080",
-      "interactions": {
-        "shares": 1,
-        "comments": 0,
-        "likes": 0
-      },
-      "shared": true,
-      "liked": false,
-      "createdDate": "2024-12-11T13:20:16.901Z",
       "dropdownVisible": false
     },
     {
@@ -44,9 +35,16 @@
       "media": "https://images.unsplash.com/photo-1472491235688-bdc81a63246e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxjYXR8ZW58MHx8fHwxNzMzOTIzMjIyfDA&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
         "shares": 1,
-        "comments": 0,
+        "comments": 1,
         "likes": 1
       },
+      "comments": [
+        {
+          "username": "PetLover22",
+          "fullname": "Pet Lover 22",
+          "description": "Such a cute cat! 😻"
+        }
+      ],
       "shared": true,
       "liked": true,
       "createdDate": "2024-12-11T13:20:21.600Z",
@@ -63,6 +61,7 @@
         "comments": 0,
         "likes": 0
       },
+      "comments": [],
       "shared": true,
       "liked": false,
       "createdDate": "2024-12-11T13:34:51.615Z",
@@ -76,12 +75,90 @@
       "media": "https://images.unsplash.com/photo-1522794338816-ee3a17a00ae8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxrZXl8ZW58MHx8fHwxNzMzOTI3Njg1fDA&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
         "shares": 0,
-        "comments": 0,
+        "comments": 1,
         "likes": 1
       },
+      "comments": [
+        {
+          "username": "MusicFan88",
+          "fullname": "Music Fan 88",
+          "description": "I love this! What instrument is that?"
+        },
+        {
+          "username": "GuestUser",
+          "fullname": "GuestUser",
+          "description": "rayi behi 1"
+        },
+        {
+          "username": "GuestUser",
+          "fullname": "GuestUser",
+          "description": "ss"
+        },
+        {
+          "username": "GuestUser",
+          "fullname": "GuestUser",
+          "description": "sds"
+        }
+      ],
       "shared": false,
       "liked": true,
       "createdDate": "2024-12-11T14:34:44.041Z",
+      "dropdownVisible": false
+    },
+    {
+      "id": "vr88cd",
+      "username": "GuestUser",
+      "fullname": "Guest User",
+      "description": "sss",
+      "media": "https://images.unsplash.com/photo-1681034575307-6a5a130f6176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxzc3N8ZW58MHx8fHwxNzMzOTI5ODU2fDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "interactions": {
+        "shares": 0,
+        "comments": 0,
+        "likes": 0
+      },
+      "comments": [
+        {
+          "username": "GuestUser",
+          "fullname": "GuestUser",
+          "description": "test"
+        },
+        {
+          "username": "GuestUser",
+          "fullname": "GuestUser",
+          "description": "sqd"
+        },
+        {
+          "username": "GuestUser",
+          "fullname": "GuestUser",
+          "description": "sdf"
+        }
+      ],
+      "shared": false,
+      "liked": false,
+      "createdDate": "2024-12-11T15:10:53.415Z",
+      "dropdownVisible": false
+    },
+    {
+      "id": "608y55",
+      "username": "GuestUser",
+      "fullname": "Guest User",
+      "description": "Welcome",
+      "media": "https://images.unsplash.com/photo-1533745848184-3db07256e163?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxXZWxjb21lfGVufDB8fHx8MTczMzkzNjgzMnww&ixlib=rb-4.0.3&q=80&w=1080",
+      "interactions": {
+        "shares": 0,
+        "comments": 0,
+        "likes": 0
+      },
+      "comments": [
+        {
+          "username": "GuestUser",
+          "fullname": "GuestUser",
+          "description": "welcome back!"
+        }
+      ],
+      "shared": false,
+      "liked": false,
+      "createdDate": "2024-12-11T17:07:10.787Z",
       "dropdownVisible": false
     }
   ]

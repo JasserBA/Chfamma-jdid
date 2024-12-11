@@ -13,7 +13,7 @@
   flex-direction: row !important;
   display: flex;
   justify-content: space-between !important;
-  gap: 15px;
+  gap: 16px;
 
   .card-body {
     padding: 0;
@@ -148,6 +148,11 @@
 .icon-grid:active .grid-1-icon-hover,
 .icon-grid:active .grid-2-icon-hover {
   opacity: 1;
+}
+
+.cards-1 {
+  display: grid;
+  gap: 16px;
 }
 
 .grid {

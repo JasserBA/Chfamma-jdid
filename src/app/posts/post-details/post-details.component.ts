@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/auth.service';
 import { Post } from 'src/app/model/post';
@@ -9,6 +10,7 @@ import { Post } from 'src/app/model/post';
   styleUrls: ['./post-details.component.scss']
 })
 export class PostDetailsComponent {
+  @Input() postId!: string;
   post!: Post;
   posts: Post[] = [];
   postsFinal: Post[] = [];
@@ -22,7 +24,7 @@ export class PostDetailsComponent {
     { icon: 'assets/imgs/icons/comment.svg', hoverIcon: 'assets/imgs/icons/comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
     { icon: 'assets/imgs/icons/like.svg', hoverIcon: 'assets/imgs/icons/like-hovered.svg', alt: 'Like Icon', nb: '22' }
   ];
-  constructor(private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private route: ActivatedRoute, private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id']; // No need to convert to a number
@@ -40,9 +42,8 @@ export class PostDetailsComponent {
       }
     });
     this.fetchCurrentUser();
-
-
   }
+
   private fetchPosts(): void {
     this.authService.getAllPosts().subscribe({
       next: (posts) => {

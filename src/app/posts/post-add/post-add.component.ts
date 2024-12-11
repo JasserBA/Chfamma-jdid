@@ -49,11 +49,13 @@ export class PostAddComponent implements OnInit {
       description: this.myForm.value.description,
       media: this.imagePreview ? this.imagePreview.toString() : 'default.png',
       interactions: { shares: 0, comments: 0, likes: 0 },
+      comments: [],
       shared: false,
       liked: false,
       createdDate: new Date().toISOString(),
       dropdownVisible: false,
     };
+
 
     try {
       newPost.media = await this.imageService.getImageForPost(newPost.description);

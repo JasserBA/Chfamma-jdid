@@ -1,6 +1,6 @@
 <div class="container">
   <div class="posts">
-    <div class="card" routerLink="/details/{{ post.id }}">
+    <div class="card">
       <div class="card-body">
         <div class="card-header border-0">
           <div class="card-group">
@@ -22,6 +22,7 @@
         <div class="post-date">
           <small>{{ post.createdDate | date:'h:mm a - MMM d, y' }}</small>
         </div>
+        <app-comment-add [postId]="post.id" class="d-grid gap-2"></app-comment-add>
       </div>
 
       <aside>

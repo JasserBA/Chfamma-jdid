@@ -1,9 +1,9 @@
-import { User } from '../model/user';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Post } from '../model/post';
-
+import { User } from '../model/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,8 +51,21 @@ export class AuthService {
     return initials.slice(0, 2).join('');
   }
 
-  updatePostById(id: string, updatedPost: Post): Observable<void> {
-    return this.http.put<void>(`${this.apiURL}/${id}`, updatedPost);
+  updatePostById(id: string, updatedPost: Post): Observable<Post> {
+    return this.http.put<Post>(`${this.apiURL}/${id}`, updatedPost);
   }
 
+  addComment(postId: string, comment: { username: string, fullname: string, description: string }): Observable<Post> {
+    return this.getPostById(postId).pipe(
+      map(post => {
+        if (post) {
+          post.comments.push(comment); // Add the new comment
+          return post;
+        } else {
+          throw new Error('Post not found');
+        }
+      }),
+      switchMap(post => this.updatePostById(postId, post)) // Update the post with the new comment
+    );
+  }
 }

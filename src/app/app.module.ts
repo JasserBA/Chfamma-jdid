@@ -20,6 +20,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PostAddComponent } from './posts/post-add/post-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentAddComponent } from './posts/comment-add/comment-add.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PostDetailsComponent,
     PostsListComponent,
     ContactComponent,
-    PostAddComponent
+    PostAddComponent,
+    CommentAddComponent
   ],
   imports: [
     BrowserModule,
