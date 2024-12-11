@@ -16,7 +16,6 @@ export class PostAddComponent implements OnInit {
   imagePreview: string | ArrayBuffer | null = null;
   initials = this.authService.getUserInitials;
   mediaURL = "";
-  generateImageFromDescription = false;
 
   constructor(
     private fb: FormBuilder,
@@ -56,13 +55,11 @@ export class PostAddComponent implements OnInit {
       dropdownVisible: false,
     };
 
-    if (this.generateImageFromDescription) {
-      try {
-        newPost.media = await this.imageService.getImageForPost(newPost.description);
-        this.mediaURL = newPost.media;
-      } catch (err) {
-        console.error(`Failed to fetch media for post ID: ${newPost.id}`, err);
-      }
+    try {
+      newPost.media = await this.imageService.getImageForPost(newPost.description);
+      this.mediaURL = newPost.media;
+    } catch (err) {
+      console.error(`Failed to fetch media for post ID: ${newPost.id}`, err);
     }
 
     this.authService.addPost(newPost).subscribe({
@@ -76,12 +73,6 @@ export class PostAddComponent implements OnInit {
       },
     });
   }
-
-  toggleGenerateImage(): void {
-    this.generateImageFromDescription = !this.generateImageFromDescription;
-    console.log(this.generateImageFromDescription);
-  }
-
 
   resizeTextarea(event: Event): void {
     const textarea = event.target as HTMLTextAreaElement;

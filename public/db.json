@@ -69,19 +69,19 @@
       "dropdownVisible": false
     },
     {
-      "id": "rttsgt",
+      "id": "o8fauw",
       "username": "GuestUser",
       "fullname": "Guest User",
-      "description": "lol",
-      "media": "default.png",
+      "description": "key",
+      "media": "https://images.unsplash.com/photo-1522794338816-ee3a17a00ae8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxrZXl8ZW58MHx8fHwxNzMzOTI3Njg1fDA&ixlib=rb-4.0.3&q=80&w=1080",
       "interactions": {
         "shares": 0,
         "comments": 0,
-        "likes": 0
+        "likes": 1
       },
       "shared": false,
-      "liked": false,
-      "createdDate": "2024-12-11T14:04:55.926Z",
+      "liked": true,
+      "createdDate": "2024-12-11T14:34:44.041Z",
       "dropdownVisible": false
     }
   ]
