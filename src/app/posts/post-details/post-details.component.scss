@@ -1,0 +1,158 @@
+.container {
+  margin-top: 60px;
+  .posts {
+    font-size: 15px;
+    max-width: 789px;
+    display: grid;
+    gap: 16px;
+
+    .card {
+      backdrop-filter: blur(20px);
+      border: solid var(--color-1) 1px;
+      border-radius: 19px;
+      padding: 15px;
+      flex-direction: row !important;
+      display: flex;
+      justify-content: space-between !important;
+      gap: 15px;
+
+      .card-body {
+        padding: 0;
+        display: grid;
+        gap: 10px;
+
+        .card-header {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding: 0;
+          background-color: transparent;
+
+          .card-group {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            .user-avatar {
+              width: 35px;
+              height: 35px;
+              background-color: var(--dark-color);
+              border-radius: 4px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              &::after {
+                content: '';
+              }
+
+              span {
+                color: var(--light-color);
+                font-weight: bold;
+              }
+            }
+          }
+        }
+
+        .card-footer {
+          padding: 0;
+          overflow: hidden;
+          border-radius: 4px;
+
+          max-height: 510px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+        }
+
+      }
+
+      aside {
+        display: grid;
+        align-content: space-between;
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .part-reacts {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+
+          .dropdownMenu {
+            width: max-content;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border: 1px solid var(--color-1);
+            border-radius: 16px;
+            background-color: var(--light-color);
+
+            a {
+              gap: 7px;
+            }
+          }
+
+        }
+
+        span {
+          font-size: 12px !important;
+        }
+      }
+
+      transition: background-color ease .3s;
+
+      &:hover {
+        background-color: var(--white) !important;
+      }
+    }
+  }
+
+  .icon-wrapper,
+  .icon-grid {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer !important;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .share-icon-hover,
+  .comment-icon-hover,
+  .like-icon-hover,
+  .grid-1-icon-hover,
+  .grid-2-icon-hover {
+    opacity: 0;
+  }
+
+  .icon-wrapper:hover .icon,
+  .icon-grid:focus .icon {
+    transition: none !important;
+    opacity: 0;
+  }
+
+
+  .icon-wrapper:hover .share-icon-hover,
+  .icon-wrapper:hover .comment-icon-hover,
+  .icon-wrapper:hover .like-icon-hover,
+  .icon-grid:active .grid-1-icon-hover,
+  .icon-grid:active .grid-2-icon-hover {
+    opacity: 1;
+  }
+}

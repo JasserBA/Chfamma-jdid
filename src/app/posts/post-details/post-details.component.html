@@ -1,1 +1,67 @@
-<p>post-details works!</p>
+<div class="container">
+  <div class="posts">
+    <div class="card" routerLink="/details/{{ post.id }}">
+      <div class="card-body">
+        <div class="card-header border-0">
+          <div class="card-group">
+            <div class="user-avatar" (click)="onPreventClick($event)">
+              <span>{{ initials(post.fullname) }}</span>
+            </div>
+            <div class="card-title m-0">
+              <b>{{ post.fullname }}</b>
+              <div class="card-subtitle"><small>@{{ post.username }}</small></div>
+            </div>
+          </div>
+          <div class="description">
+            <p class="m-0">{{ post.description }}</p>
+          </div>
+        </div>
+        <div class="card-footer" *ngIf="post.media">
+          <img [src]="post.media" alt="Post Media">
+        </div>
+        <div class="post-date">
+          <small>{{ post.createdDate | date:'h:mm a - MMM d, y' }}</small>
+        </div>
+      </div>
+
+      <aside>
+        <a (click)="deletePost($event, post.id)">
+          <img src="../../../assets/imgs/icons/dots.svg" alt="Dots Icon">
+        </a>
+        <div class="part-reacts">
+          <div class="text-center position-relative w-100" [title]="!post.shared ? 'Share it' : 'Shared!'">
+            <a class="icon-wrapper" (click)="toggleDropdown($event, post.id)">
+              <img src="../../../assets/imgs/icons/share.svg" alt="Share Icon" class="icon">
+              <img src="../../../assets/imgs/icons/share-hovered.svg" alt="Hovered Share Icon"
+                [class.share-icon-hover]="!post.shared">
+            </a>
+            <span class="m-0">{{ post.interactions.shares }}</span>
+
+            <div *ngIf="post.dropdownVisible" class="dropdownMenu position-absolute bottom-100 end-0"
+              (click)="copyPostURL($event, post.id, post)">
+              <a title="Copy post Link">Copy URL <img src="../../../assets/imgs/icons/copy.svg" alt="Copy URL"></a>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <a class="icon-wrapper" title="View comments">
+              <img src="../../../assets/imgs/icons/comment.svg" alt="Comment Icon" class="icon">
+              <img src="../../../assets/imgs/icons/comment-hovered.svg" alt="Hovered Comment Icon"
+                class="comment-icon-hover">
+            </a>
+            <span class="m-0">{{ post.interactions.comments }}</span>
+          </div>
+
+          <div class="text-center" [title]="!post.liked ? 'Like it' : 'Liked!'">
+            <a (click)="onLikeClick($event, post)" class="icon-wrapper">
+              <img src="../../../assets/imgs/icons/like.svg" alt="Like Icon" class="icon">
+              <img src="../../../assets/imgs/icons/like-hovered.svg" alt="Hovered Like Icon"
+                [class.like-icon-hover]="!post.liked">
+            </a>
+            <span class="m-0">{{ post.interactions.likes }}</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

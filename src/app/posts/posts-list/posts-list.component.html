@@ -39,6 +39,9 @@
         <div class="card-footer" *ngIf="post.media">
           <img [src]="post.media" alt="Post Media">
         </div>
+        <div class="post-date">
+          <small>{{ post.createdDate | date:'h:mm a - MMM d, y' }}</small>
+        </div>
       </div>
 
       <aside>
