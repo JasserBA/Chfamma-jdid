@@ -17,6 +17,7 @@ export class PostsListComponent implements OnInit {
   initials = this.authService.getUserInitials;
   dropdownVisible: boolean = false;
   toggleGrid: string = "grid-1";
+  mediaURL = ""
   actions = [
     { icon: 'assets/imgs/icons/share.svg', hoverIcon: 'assets/imgs/icons/share-hovered.svg', alt: 'Share Icon', nb: '5' },
     { icon: 'assets/imgs/icons/comment.svg', hoverIcon: 'assets/imgs/icons/comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
@@ -44,8 +45,15 @@ export class PostsListComponent implements OnInit {
   private async fetchPostMedia(): Promise<void> {
     for (const post of this.postsFinal) {
       if (!post.media) {
+        post.media = this.mediaURL
+        this.authService.updatePostById(post.id, post).subscribe({
+          next: () => console.log('Post updated successfully'),
+          error: (err) => console.error('Error updating post:', err)
+        });
         try {
           post.media = await this.imageService.getImageForPost(post.description);
+          console.log(post.media);
+          this.mediaURL = post.media
         } catch (err) {
           console.error(`Failed to fetch media for post ID: ${post.id}`, err);
         }
@@ -72,7 +80,6 @@ export class PostsListComponent implements OnInit {
   onLikeClick(event: MouseEvent, post: Post): void {
     post.liked = !post.liked;
     post.interactions.likes += post.liked ? 1 : -1;
-
     this.authService.updatePostById(post.id, post).subscribe({
       next: () => console.log('Post updated successfully'),
       error: (err) => console.error('Error updating post:', err)

@@ -41,6 +41,7 @@ export class PostDetailsComponent {
     });
     this.fetchCurrentUser();
 
+
   }
   private fetchPosts(): void {
     this.authService.getAllPosts().subscribe({

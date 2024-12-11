@@ -18,7 +18,7 @@ export class PostAddComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class PostAddComponent implements OnInit {
       interactions: { shares: 0, comments: 0, likes: 0 },
       shared: false,
       liked: false,
-      createdDate: new Date().getTime().toString(),
+      createdDate: new Date().toISOString(), // Use ISO format for better compatibility
       dropdownVisible: false
     };
 
@@ -83,4 +83,5 @@ export class PostAddComponent implements OnInit {
   private generateUniqueId(): string {
     return Math.random().toString(36).substring(2, 8);
   }
+
 }
