@@ -11,9 +11,11 @@ export class NavbarComponent implements OnInit {
   currentUser: { username: string; fullname: string } | null = null;
   initials = this.authService.getUserInitials;
   dropdownVisible: boolean = false;
+
   constructor(private authService: AuthService, private router: Router) { }
   ngOnInit(): void {
     this.fetchCurrentUser()
+
   }
 
   fetchCurrentUser() {
@@ -44,5 +46,9 @@ export class NavbarComponent implements OnInit {
     });
     console.log('Logging out...');
     this.router.navigate(['/']).then(() => window.location.reload())
+  }
+  onSearchChange(value: string): void {
+    this.authService.setSearch(value);
+    console.log(value);
   }
 }

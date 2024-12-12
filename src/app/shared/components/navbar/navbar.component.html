@@ -12,7 +12,8 @@
     <form class="form-inline d-flex ">
       <img class="iSearch" src="../../assets/imgs/icons/search.svg" id="svg" width="15" alt="">
       <input class="form-control mr-sm-2 rounded-pill bg-transparent border border-none" type="search"
-        placeholder="Lawej 7eja..." aria-label="Search" autocomplete="off">
+        placeholder="Lawej 7eja..." aria-label="Search" autocomplete="off"
+        (input)="onSearchChange($any($event).target.value)">
     </form>
 
     <button class="btn btn-outline-primary  my-2 my-sm-0 rounded-pill" routerLink="/login" title="Login Now!"

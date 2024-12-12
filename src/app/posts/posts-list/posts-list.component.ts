@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/auth.service';
 import { Post } from 'src/app/model/post';
 @Component({
@@ -10,12 +11,13 @@ export class PostsListComponent implements OnInit {
   gridType = false;
   posts: Post[] = [];
   postsFinal: Post[] = [];
-  filterText = '';
   currentUser: { username: string; fullname: string } | null = null;
   initials = this.authService.getUserInitials;
   dropdownVisible: boolean = false;
   toggleGrid: string = "grid-1";
-  mediaURL = ""
+  filterText = ''
+  searchSubscription!: Subscription;
+
   actions = [
     { icon: 'assets/imgs/icons/share.svg', hoverIcon: 'assets/imgs/icons/share-hovered.svg', alt: 'Share Icon', nb: '5' },
     { icon: 'assets/imgs/icons/comment.svg', hoverIcon: 'assets/imgs/icons/comment-hovered.svg', alt: 'Comment Icon', nb: '12' },
@@ -27,6 +29,10 @@ export class PostsListComponent implements OnInit {
   ngOnInit(): void {
     this.fetchPosts();
     this.fetchCurrentUser();
+    this.searchSubscription = this.authService.search$.subscribe(value => {
+      this.filterText = value;
+      this.filterPosts();
+    });
   }
 
   private fetchPosts(): void {
@@ -38,17 +44,6 @@ export class PostsListComponent implements OnInit {
       },
       error: (err) => console.error('Failed to fetch posts:', err)
     });
-  }
-
-  set text(value: string) {
-    this.filterText = value.toLowerCase();
-    this.postsFinal = this.posts.filter((post) =>
-      post.description.toLowerCase().includes(this.filterText)
-    );
-  }
-
-  get text(): string {
-    return this.filterText;
   }
 
   onPreventClick(event: MouseEvent): void {
@@ -136,4 +131,15 @@ export class PostsListComponent implements OnInit {
     this.posts.forEach(p => p.dropdownVisible = false);
   }
 
+  ngOnDestroy(): void {
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
+    }
+  }
+
+  private filterPosts(): void {
+    this.postsFinal = this.posts.filter(post =>
+      post.description.toLowerCase().includes(this.filterText)
+    );
+  }
 }

@@ -18,9 +18,8 @@
 
   <app-post-add></app-post-add>
 
-
   <div [ngClass]="{ 'cards-1': toggleGrid === 'grid-1', 'cards-2': toggleGrid === 'grid-2' }">
-    <div class="card" *ngFor="let post of posts" routerLink="/details/{{ post.id }}">
+    <div class="card" *ngFor="let post of postsFinal" routerLink="/details/{{ post.id }}">
       <div class="card-body">
         <div class="card-header border-0">
           <div class="card-group">
