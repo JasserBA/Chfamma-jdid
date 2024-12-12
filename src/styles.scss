@@ -36,10 +36,10 @@ html {
   background-color: var(--color-2);
   color: var(--light-color);
 }
-/*body::before{
+body::before{
     content: '';
     display: block;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -47,11 +47,12 @@ html {
     opacity: 0.1;
     background-image: url('./assets/imgs/pic-bg.png');
     background-repeat: no-repeat;
-    background-size: 90%;
+    background-size: cover;
     background-position: 50% 0;
     background-attachment: fixed;
+    z-index: -1;
 }
-    */
+
 body{
   background-color: transparent !important;
   font-family: 'roboto', sans-serif;
