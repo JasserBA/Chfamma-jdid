@@ -9,33 +9,34 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiURL = "http://localhost:3000/posts";
+  private postApiURL = "http://localhost:3000/posts";
   private currentUserApiURL = "http://localhost:3000/currentuser";
+  private userApiURL = "http://localhost:3000/users";
   private searchSubject = new BehaviorSubject<string>('');
   search$ = this.searchSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiURL);
+    return this.http.get<Post[]>(this.postApiURL);
   }
 
   getPostById(id: string): Observable<Post | undefined> {
-    return this.http.get<Post[]>(this.apiURL).pipe(
+    return this.http.get<Post[]>(this.postApiURL).pipe(
       map(posts => posts.find(post => post.id === id))
     );
   }
 
   addPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.apiURL, post);
+    return this.http.post<Post>(this.postApiURL, post);
   }
 
   deletePostById(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiURL}/${id}`);
+    return this.http.delete<void>(`${this.postApiURL}/${id}`);
   }
 
   updatePostById(id: string, updatedPost: Post): Observable<Post> {
-    return this.http.put<Post>(`${this.apiURL}/${id}`, updatedPost);
+    return this.http.put<Post>(`${this.postApiURL}/${id}`, updatedPost);
   }
 
   addComment(postId: string, comment: { username: string, fullname: string, description: string }): Observable<Post> {
@@ -74,5 +75,20 @@ export class AuthService {
     const names = fullName.split(' ');
     const initials = names.map(name => name.charAt(0).toUpperCase());
     return initials.slice(0, 2).join('');
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.userApiURL);
+  }
+
+  // verifyLogin(credentials: { username: string, password: string }): Observable<any> {
+  //   return this.http.post<any>(`${this.userApiURL}`, credentials);
+  // }
+
+  loginCurrentUser(loginUsername: string, loginFullname: string): Observable<User | null> {
+    return this.http.put<User | null>(`${this.currentUserApiURL}`, {
+      username: loginUsername,
+      fullname: loginFullname
+    });
   }
 }

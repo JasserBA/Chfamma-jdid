@@ -1,12 +1,14 @@
 <div class="card">
   <h2>Login</h2>
-  <form class="form-inline" action="">
+  <form class="form-inline" [formGroup]="myFormLogin" (ngSubmit)="doLogin()">
     <div class="inputs">
       <div class="two-inputs">
-        <input class="form-control mr-sm-2 rounded-3 bg-transparent border border-none" type="text"
-          placeholder="Username or Email" aria-label="email" autocomplete="off">
+        <div>
+          <input class="form-control mr-sm-2 rounded-3 bg-transparent border border-none" type="text"
+            placeholder="Username or Email" aria-label="email" autocomplete="off" formControlName="username">
+        </div>
         <input class="form-control mr-sm-2 rounded-3 bg-transparent border border-none" type="password"
-          placeholder="Password" aria-label="email" autocomplete="off">
+          placeholder="Password" aria-label="email" autocomplete="off" formControlName="password">
       </div>
       <div class="last-input">
         <label for="remember">

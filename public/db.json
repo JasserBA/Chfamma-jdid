@@ -1,8 +1,16 @@
 {
   "currentuser": {
-    "username": null,
-    "fullname": null
+    "username": "jasser",
+    "fullname": "jasser ben abdallah"
   },
+  "users": [
+    {
+      "username": "jasser",
+      "fullname": "jasser ben abdallah",
+      "password": "123456789",
+      "id": "9604"
+    }
+  ],
   "posts": [
     {
       "id": "c99xs3",
