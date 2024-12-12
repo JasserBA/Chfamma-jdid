@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   users: User[] = []
   fullname = ""
   filteredUser: User[] = []
+  remember: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
   ngOnInit(): void {

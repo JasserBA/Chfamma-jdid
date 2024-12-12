@@ -14,11 +14,12 @@
       </div>
       <div class="last-input">
         <label for="agree">
-          <input type="checkbox" name="agree" id="agree">I agree to the terms and conditions.
+          <input type="checkbox" name="agree" id="agree" (change)="agree = !agree">I agree to the terms and conditions.
         </label>
       </div>
     </div>
-    <button class="btn rounded-5" routerLink="/Signup" type="submit">Create your account</button>
+    <button class="btn rounded-5" routerLink="/Signup" type="submit" [disabled]="!agree || myFormSignup.invalid">Create
+      your account</button>
     <p>Already have an account? <a routerLink="/login">Login</a></p>
 
   </form>

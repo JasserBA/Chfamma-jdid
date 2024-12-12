@@ -124,29 +124,6 @@
       "liked": false,
       "createdDate": "2024-12-11T14:34:44.041Z",
       "dropdownVisible": false
-    },
-    {
-      "id": "javxiw",
-      "username": "GuestUser",
-      "fullname": "Guest User",
-      "description": "keyboard",
-      "media": "https://images.unsplash.com/photo-1536059540012-f2ed455bc0b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2ODMzNDZ8MHwxfHNlYXJjaHwxfHxrZXlib2FyZHxlbnwwfHx8fDE3MzM5MzgxOTR8MA&ixlib=rb-4.0.3&q=80&w=1080",
-      "interactions": {
-        "shares": 0,
-        "comments": 0,
-        "likes": 0
-      },
-      "comments": [
-        {
-          "username": "GuestUser",
-          "fullname": "GuestUser",
-          "description": "7low"
-        }
-      ],
-      "shared": false,
-      "liked": false,
-      "createdDate": "2024-12-11T17:29:53.174Z",
-      "dropdownVisible": false
     }
   ]
 }

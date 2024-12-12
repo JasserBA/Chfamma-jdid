@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   users: User[] = []
   fullname = ""
   filteredUser: User[] = []
+  agree: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
   ngOnInit(): void {

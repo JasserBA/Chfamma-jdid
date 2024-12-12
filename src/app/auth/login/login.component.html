@@ -12,13 +12,12 @@
       </div>
       <div class="last-input">
         <label for="remember">
-          <input type="checkbox" name="remember" id="remember">Remember
+          <input type="checkbox" name="remember" id="remember" (change)="remember = !remember">Remember
         </label>
         <a href="#forget-password">Forget Password?</a>
       </div>
     </div>
-    <button class="btn rounded-5" type="submit">Login</button>
+    <button class="btn rounded-5" type="submit" [disabled]="!remember || myFormLogin.invalid">Login</button>
     <p>Don't have account? <a routerLink="/signup">Signup</a></p>
-
   </form>
 </div>
