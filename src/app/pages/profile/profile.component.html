@@ -1,1 +1,33 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="card" *ngIf="currentUser && currentUser.fullname">
+    <div class="card-group">
+      <div class="user-avatar">
+        <span>{{ initials(currentUser.fullname) }}</span>
+      </div>
+      <div class="card-title m-0">
+        <span><b>{{ currentUser.fullname }}</b></span>
+        <div class="card-subtitle"><small>@{{ currentUser.username }}</small></div>
+      </div>
+    </div>
+    <hr>
+    <div class="bottom">
+      <div class="sidebar">
+        <div class="item" style="background-color: var(--color-2)">
+          <a routerLink="/profile" title="View Profile" style="color: var(--white);">View Profile</a>
+        </div>
+        <div class="item">
+          <a (click)="onLogout()" style="cursor: pointer;">Log Out</a>
+        </div>
+
+      </div>
+      <div class="content">
+        <h2>My Profile</h2>
+        <div class="infos">
+          <h5>Fullname: <mark>{{ currentUser.fullname }}</mark></h5>
+          <h5>@Username: <mark>{{ currentUser.username }}</mark></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
