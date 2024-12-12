@@ -81,10 +81,16 @@ export class AuthService {
     return this.http.get<User[]>(this.userApiURL);
   }
 
-  // verifyLogin(credentials: { username: string, password: string }): Observable<any> {
-  //   return this.http.post<any>(`${this.userApiURL}`, credentials);
+  // SignupCurrentUser(signupFullname: string, signupUsername: string, signupPassword: string): Observable<any> {
+  //   return this.http.post<any>(`${this.userApiURL}`, {
+  //     fullname: signupFullname,
+  //     username: signupUsername,
+  //     password: signupPassword
+  //   });
   // }
-
+  SignupCurrentUser(Signeduser: User): Observable<any> {
+    return this.http.post<any>(`${this.userApiURL}`, Signeduser);
+  }
   loginCurrentUser(loginUsername: string, loginFullname: string): Observable<User | null> {
     return this.http.put<User | null>(`${this.currentUserApiURL}`, {
       username: loginUsername,

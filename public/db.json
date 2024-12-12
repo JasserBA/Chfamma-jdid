@@ -1,14 +1,26 @@
 {
   "currentuser": {
-    "username": "jasser",
-    "fullname": "jasser ben abdallah"
+    "username": null,
+    "fullname": null
   },
   "users": [
     {
+      "id": "9604",
       "username": "jasser",
       "fullname": "jasser ben abdallah",
-      "password": "123456789",
-      "id": "9604"
+      "password": "123456789"
+    },
+    {
+      "id": "emr0ls",
+      "username": "qsdqs",
+      "fullname": "qsdqsd",
+      "password": "dqs"
+    },
+    {
+      "id": "g6emmu",
+      "username": "qsdqsdddddddddddddddddddd",
+      "fullname": "qsdqsdqsd",
+      "password": "ddddddddddddddddd"
     }
   ],
   "posts": [
@@ -44,7 +56,7 @@
       "interactions": {
         "shares": 1,
         "comments": 1,
-        "likes": 1
+        "likes": 0
       },
       "comments": [
         {
@@ -54,7 +66,7 @@
         }
       ],
       "shared": true,
-      "liked": true,
+      "liked": false,
       "createdDate": "2024-12-11T13:20:21.600Z",
       "dropdownVisible": false
     },
@@ -84,7 +96,7 @@
       "interactions": {
         "shares": 0,
         "comments": 1,
-        "likes": 1
+        "likes": 0
       },
       "comments": [
         {
@@ -109,7 +121,7 @@
         }
       ],
       "shared": false,
-      "liked": true,
+      "liked": false,
       "createdDate": "2024-12-11T14:34:44.041Z",
       "dropdownVisible": false
     },

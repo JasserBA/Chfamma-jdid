@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   users: User[] = []
   fullname = ""
   filteredUser: User[] = []
+
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
   ngOnInit(): void {
     this.initializeForm()
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const newLogin: User = {
+      id: this.generateUniqueId(),
       username: this.myFormLogin.value.username,
       fullname: this.fullname,
       password: this.myFormLogin.value.password,
@@ -60,9 +62,9 @@ export class LoginComponent implements OnInit {
           console.error(err);
         }
       });
-    } else {
-      alert("user not exist! Failed LOGIN")
     }
   }
-
+  private generateUniqueId(): string {
+    return Math.random().toString(36).substring(2, 8);
+  }
 }
