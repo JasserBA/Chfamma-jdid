@@ -30,7 +30,7 @@ export class PostsListComponent implements OnInit {
     this.fetchPosts();
     this.fetchCurrentUser();
     this.searchSubscription = this.authService.search$.subscribe(value => {
-      this.filterText = value;
+      this.filterText = value.toLowerCase();
       this.filterPosts();
     });
   }
